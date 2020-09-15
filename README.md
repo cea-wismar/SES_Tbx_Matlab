@@ -1,6 +1,6 @@
 INTRODUCTION
 
-The super software "SES_Tbx_Matlab" has been developed by the research group
+The software "SES_Tbx_Matlab" has been developed by the research group
 Computational Engineering and Automation (CEA) at Wismar University of Applied Sciences.
 Purpose of the software is ontology based modeling of system variants
 (system structures and parameter configurations) using
