@@ -11,18 +11,27 @@ Structure / Model Base (SES/MB) approach.
 
 Information on the SES and this toolbox is available on the website:  
 https://www.cea-wismar.de/tbx/SES_Tbx/sesToolboxMain.html  
-The software is a Matlab Toolbox and also available as Matlab APP. The current version was tested with
+The software is a Matlab Toolbox and also available as Matlab App. The current version is tested with
 Matlab R2018a and Matlab R2020a.
 
 EXECUTE
 
-In a started Matlab change the current folder to the SES_Toolbox directory.
+In a running Matlab set the SES_Toolbox directory as current folder.
 Enter "ses_tbx" in the command window.
+Alternatively install the app from releases and start it.
+
+ADD ON TOOL: TREEVIEWER
+
+- The SES can be displayed as tree with the program SESViewEl. For communication
+with SESViewEl the Matlab Instrument Control Toolbox needs to be installed and
+licensed. If the SES is not displayed completely, the SES needs to be sent again
+from the SES Toolbox. A step by step guide is in this directory in the file 
+"SES_Toolbox_SESViewEl_Steps.pdf".
 
 KNOWN BUGS, NOTES, TODO
 
 - All node information in the program need to be set by clicking the respective
-confirm button. If you forget to click it, the information stay visible in the
+confirm button. If you forget to click it, information stays visible in the
 field, until a different node is selected.
 
 - When a PES or an FPES is derived, first a target file for saving the derived
@@ -34,15 +43,11 @@ are passed, there is no warning and the inserted information is not removed.
 However, it is not saved. Clicking another node and clicking the node for which
 the information is applied again, makes the insert field be empty.
 
-- The SES can be displayed as tree with the program SESViewEl. For communication
-with SESViewEl the Matlab Instrument Control Toolbox needs to be installed and
-licensed. If the SES is not displayed completely, the SES needs to be sent again
-from the SES Toolbox. A step by step guide is in this directory in the file 
-"SES_Toolbox_SESViewEl_Steps.pdf".
-
 - Next to the built-in examples more examples are in the directory
 "more_examples". In this directory a documentation for some of these
 examples is placed.
+
+- Different from older versions, current release allows to define subtrees under multi-aspect nodes.
 
 LICENSE
 
