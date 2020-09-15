@@ -1,0 +1,142 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Variant Subsystem (Dynamic Couplings)</title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+<h1>Variant Subsystem (Dynamic Couplings)</h1>
+
+<h2>Motivation</h2>
+<p>
+This example is a straightforward extension of the example A01 "Variant Subsystem (simple)".
+It extends the previous one by more variability, which results in a higher number of variants. It uses dynamic coupling relations and shows how they can be specified with SES Functions. Subsequently, we only describe the extensions, which are highlighted in the SES tree. 
+
+<details>
+<summary>Basic enlargement and resulting system variants:</summary>
+<img src="images/A02_1.png" width="600"/>
+</details>
+
+<details>
+<summary>Basic SES:</summary>
+<img src="images/A02_SES.png" width="600"/> 
+</details> 
+</p>
+ 
+
+<h2>Description</h2>
+<p>
+The example extends the previous one by a varying number of signal generators, that means:
+</p>
+<ul>
+	<li> The number of signal inputs for a controller can vary. Either one, two or three sine wave generators are connected to a specific controller model.</li> 	
+	<li>The internal model structure of the two controllers depends on the number of connected signal generators.</li>
+	<li> <b>Notice</b>, that in contrast to the example A01, in this example not always the second sensor input of the controllers is connected with the linear (discrete transfer fcn) or non-linear (look-up table) controller element. In the special case of only one sensor input, this single input should be connected to the linear or non-linear controller element. Of course, in this special case the adder element could be eliminated, but for simplicity we retain it in the model.</li>
+</ul>
+
+<p>
+Overall, the SES describes now 6 different model variants (2 x 3).
+</p>
+ 
+	
+<h3>Dynamic Configuration of a MultiAspect
+(Modifications regarding to node SignalMAsp)</h3>
+<p>
+The first thing that has to be changed in the SES compared to the example A01, is 
+the Number Of Replications property at the MultiAspect node. Previously it was set to the constant value of 3. Now you define an SES Variable <code>NumSignals</code> to control the number of sine wave generators. This variable may have the value 1, 2 or 3, which has to be defined as Semantic Condition wit <code>ismember(NumSignals,[1,2,3])</code>. 
+</p>
+<p>
+Moreover, we have to define 3 different coupling specifications, one for each possible case of replication. Therefor, we can define 3 coupling tables, such as in the example SES, or we can define an SES Function, such as following, named <code>c_sg</code>:
+
+
+<pre class="codeinput">
+<span class="keyword">function</span> cplg = c_sg(children,parent,num)
+<span class="comment">%create empty data structure for couplings</span>
+cplg = cell(num,4);
+<span class="comment">%set variable couplings btw children & parent</span>
+<span class="keyword">for</span> i = 1:num
+    cplg(i,1:4) = {children{i}, num2str(1),parent, num2str(i)};
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+
+and activate the "Choose Function to set Coupling" field in the editor with the following SES Function call:
+
+<pre><code>
+  c_sg('Children','Parent',NumSignals)
+</code></pre>
+</p>
+
+
+<h3>Dynamic Couplings at Aspects Using SES Functions</h3>
+<p>
+Because of the problem enlargement by a varying number of input generators, the number of ports and the couplings are different for the various variants. This problem is solved by using SES Functions for specifying the coupling relations at the Aspect nodes (see nodes ModelDec, LCDec and NLCDec) in the SES, similiar to the above described SES Function for the MultiAspect node and the SES Functions used in example B07. For details regarding to the call and definition of SES Functions open this SES model example in the SES editor and have a look to the tab "Functions". Examplary, we show subsequently the definition of the SES Function <code>CtrCoupl</code>, 
+
+<pre class="codeinput">
+<span class="keyword">function</span> cellArray = CtrCoupl(Children,Parent,NumSignals)
+<span class="keyword">switch</span> NumSignals
+    <span class="keyword">case</span> 1
+        cellArray = {Parent,<span class="string">'1'</span>,     Children{1},<span class="string">'1'</span>;
+                     Children{1},<span class="string">'1'</span>,Children{2},<span class="string">'1'</span>;
+                     Children{2},<span class="string">'1'</span>,Parent,     <span class="string">'1'</span>}; 
+    <span class="keyword">case</span> 2
+        cellArray = {Parent,     <span class="string">'1'</span>,Children{2},<span class="string">'1'</span>;
+                     Parent,     <span class="string">'2'</span>,Children{1},<span class="string">'1'</span>;
+                     Children{1},<span class="string">'1'</span>,Children{2},<span class="string">'2'</span>;
+                     Children{2},<span class="string">'1'</span>,Parent,     <span class="string">'1'</span>};  
+    <span class="keyword">case</span> 3
+        cellArray = {Parent,     <span class="string">'1'</span>,Children{2},<span class="string">'1'</span>;
+                     Parent,     <span class="string">'2'</span>,Children{1},<span class="string">'1'</span>;
+                     Children{1},<span class="string">'1'</span>,Children{2},<span class="string">'2'</span>;
+                     Parent,     <span class="string">'3'</span>,Children{2},<span class="string">'3'</span>;
+                     Children{2},<span class="string">'1'</span>,Parent,     <span class="string">'1'</span>};
+    <span class="keyword">otherwise</span>
+        cellArray = cell(1,4);
+<span class="keyword">end</span>
+<span class="keyword">end</span></pre>
+
+which is used in the same manner for specifying the variable coupling relations at node LCDec and NLCDec with the SES Function call
+
+<pre><code>
+  CtrlCoupl('Children','Parent',NumSignals)
+</code></pre>
+</p>
+
+<h3>Variable Configuration of Entities and Referenced Dynamic Models</h3>
+<p>	
+Moreover, the varying internal structure of the controllers, caused by the variable number of sensor inputs, requires a variable configuration for the leaf entity Add, which references a dynamic model in the MB by its attribute <code>mb='add'</code>. 
+
+That's why, its attribute <code>Inputs</code> is specified using an SES Function call, <code>addFun(NumSignals)</code>, to calculate this attribute dynamically depending on the specific number of choosen sensor inputs (signal generators). Subsequently, you see the definition of the SES Function.
+
+<pre class="codeinput">
+<span class="keyword">function</span> Inputs = addFun(NumRep)
+<span class="keyword">switch</span> NumRep
+    <span class="keyword">case</span> 1
+        Inputs = <span class="string">'|+'</span>;
+    <span class="keyword">case</span> 2
+        Inputs = <span class="string">'|++'</span>;
+    <span class="keyword">otherwise</span>
+        Inputs = <span class="string">'|+++'</span>;        
+<span class="keyword">end</span>
+<span class="keyword">end</span>
+</pre>
+
+
+<h3>MB and Model Generation</h3>
+Analogous to the example A01, this SES defines references to dynamic models in an MB, namely the Simulink library. For controlling the entire model generation process use the MATLAB function ./startFcn... located in the example's directory. All other functions involved with the model generation process are located in the example's subdirectory <code>private</code>.
+
+
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>

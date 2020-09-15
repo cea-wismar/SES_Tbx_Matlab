@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8"?>
+<SES>
+   <nodes>
+      <node comment="MY NODE COMMENT" idx="1" name="VariantSubsystems" parent=""
+            treepath="VariantSubsystems"
+            type="Entity">
+         <children>
+            <child idx="1" name="ModelDec"/>
+         </children>
+         <attributes/>
+      </node>
+      <node comment="MY NODE COMMENT" idx="2" name="ModelDec" parent="VariantSubsystems"
+            priority="1"
+            treepath="VariantSubsystems/ModelDec"
+            type="Aspect">
+         <children>
+            <child idx="1" name="Signals"/>
+            <child idx="2" name="Controller"/>
+            <child idx="3" name="Scope"/>
+         </children>
+         <aspectrules/>
+         <couplings coupling_fun="ModelCoupl(Children,NumSignals)"/>
+      </node>
+      <node comment="MY NODE COMMENT" idx="3" name="Controller" parent="ModelDec"
+            treepath="VariantSubsystems/ModelDec/Controller"
+            type="Entity">
+         <children>
+            <child idx="1" name="ControllerSpec"/>
+         </children>
+         <attributes/>
+      </node>
+      <node comment="MY NODE COMMENT" idx="4" name="ControllerSpec" parent="Controller"
+            treepath="VariantSubsystems/ModelDec/Controller/ControllerSpec"
+            type="Spec">
+         <children>
+            <child idx="1" name="LinearController"/>
+            <child idx="2" name="NonLinearController"/>
+         </children>
+         <specrules>
+            <specrule condition="VSS_MODE == 1" idx="1" selection="LinearController"/>
+            <specrule condition="VSS_MODE == 2" idx="2" selection="NonLinearController"/>
+         </specrules>
+      </node>
+      <node comment="MY NODE COMMENT" idx="5" name="LinearController"
+            parent="ControllerSpec"
+            treepath="VariantSubsystems/ModelDec/Controller/ControllerSpec/LinearController"
+            type="Entity">
+         <children>
+            <child idx="1" name="LCDec"/>
+         </children>
+         <attributes/>
+      </node>
+      <node comment="MY NODE COMMENT" idx="6" name="LCDec" parent="LinearController"
+            priority="1"
+            treepath="VariantSubsystems/ModelDec/Controller/ControllerSpec/LinearController/LCDec"
+            type="Aspect">
+         <children>
+            <child idx="1" name="DiscreteTransferFcn"/>
+            <child idx="2" name="Add"/>
+         </children>
+         <aspectrules/>
+         <couplings coupling_fun="CtrCoupl(Children,Parent,NumSignals)"/>
+      </node>
+      <node comment="MY NODE COMMENT" idx="7" name="Add" parent="LCDec"
+            treepath="VariantSubsystems/ModelDec/Controller/ControllerSpec/LinearController/LCDec/Add"
+            type="Entity">
+         <children/>
+         <attributes>
+            <attribute idx="1" name="mb" value="'varDemo2Lib/Add'"/>
+            <attribute idx="2" name="Inputs" value="addFun(NumSignals)"/>
+         </attributes>
+      </node>
+      <node comment="MY NODE COMMENT" idx="8" name="DiscreteTransferFcn" parent="LCDec"
+            treepath="VariantSubsystems/ModelDec/Controller/ControllerSpec/LinearController/LCDec/DiscreteTransferFcn"
+            type="Entity">
+         <children/>
+         <attributes>
+            <attribute idx="1" name="mb" value="'varDemo2Lib/TransferFcn'"/>
+            <attribute idx="2" name="Numerator" value="[1,0.7]"/>
+            <attribute idx="3" name="Denominator" value="[1,0.09,0.5]"/>
+         </attributes>
+      </node>
+      <node comment="MY NODE COMMENT" idx="9" name="NonLinearController"
+            parent="ControllerSpec"
+            treepath="VariantSubsystems/ModelDec/Controller/ControllerSpec/NonLinearController"
+            type="Entity">
+         <children>
+            <child idx="1" name="NLCDec"/>
+         </children>
+         <attributes/>
+      </node>
+      <node comment="MY NODE COMMENT" idx="10" name="NLCDec" parent="NonLinearController"
+            priority="1"
+            treepath="VariantSubsystems/ModelDec/Controller/ControllerSpec/NonLinearController/NLCDec"
+            type="Aspect">
+         <children>
+            <child idx="1" name="LookUpTable"/>
+            <child idx="2" name="Add"/>
+         </children>
+         <aspectrules/>
+         <couplings coupling_fun="CtrCoupl(Children,Parent,NumSignals)"/>
+      </node>
+      <node comment="MY NODE COMMENT" idx="11" name="Add" parent="NLCDec"
+            treepath="VariantSubsystems/ModelDec/Controller/ControllerSpec/NonLinearController/NLCDec/Add"
+            type="Entity">
+         <children/>
+         <attributes>
+            <attribute idx="1" name="mb" value="'varDemo2Lib/Add'"/>
+            <attribute idx="2" name="Inputs" value="addFun(NumSignals)"/>
+         </attributes>
+      </node>
+      <node comment="MY NODE COMMENT" idx="12" name="LookUpTable" parent="NLCDec"
+            treepath="VariantSubsystems/ModelDec/Controller/ControllerSpec/NonLinearController/NLCDec/LookUpTable"
+            type="Entity">
+         <children/>
+         <attributes>
+            <attribute idx="1" name="mb" value="'varDemo2Lib/LookupTable1D'"/>
+            <attribute idx="2" name="Table" value="LookUpTableDataFcn()"/>
+            <attribute idx="3" name="BreakpointsForDimension1" value="[-5:5]"/>
+         </attributes>
+      </node>
+      <node comment="MY NODE COMMENT" idx="13" name="Scope" parent="ModelDec"
+            treepath="VariantSubsystems/ModelDec/Scope"
+            type="Entity">
+         <children/>
+         <attributes>
+            <attribute idx="1" name="mb" value="'varDemo2Lib/Out'"/>
+            <attribute idx="2" name="Port" value="1"/>
+         </attributes>
+      </node>
+      <node comment="MY NODE COMMENT" idx="14" name="Signals" parent="ModelDec"
+            treepath="VariantSubsystems/ModelDec/Signals"
+            type="Entity">
+         <children>
+            <child idx="1" name="SignalMAsp"/>
+         </children>
+         <attributes/>
+      </node>
+      <node comment="MY NODE COMMENT" idx="15" int_end="3" int_start="1" name="SignalMAsp"
+            num_rep="NumSignals"
+            parent="Signals"
+            priority="1"
+            treepath="VariantSubsystems/ModelDec/Signals/SignalMAsp"
+            type="MAspect">
+         <children>
+            <child idx="1" name="Sine"/>
+         </children>
+         <aspectrules/>
+         <couplings idx="1">
+            <coupling idx="1" sink="Signals" sink_port="1" source="Sine_1" source_port="1"/>
+         </couplings>
+         <couplings idx="2">
+            <coupling idx="1" sink="Signals" sink_port="1" source="Sine_1" source_port="1"/>
+            <coupling idx="2" sink="Signals" sink_port="2" source="Sine_2" source_port="1"/>
+         </couplings>
+         <couplings idx="3">
+            <coupling idx="1" sink="Signals" sink_port="1" source="Sine_1" source_port="1"/>
+            <coupling idx="2" sink="Signals" sink_port="2" source="Sine_2" source_port="1"/>
+            <coupling idx="3" sink="Signals" sink_port="3" source="Sine_3" source_port="1"/>
+         </couplings>
+      </node>
+      <node comment="MY NODE COMMENT" idx="16" name="Sine" parent="SignalMAsp"
+            treepath="VariantSubsystems/ModelDec/Signals/SignalMAsp/Sine"
+            type="Entity">
+         <children/>
+         <attributes>
+            <attribute idx="1" name="mb" value="'varDemo2Lib/Sine'"/>
+            <attribute idx="2" name="Amplitude" value="#{0.1,2,0.3}"/>
+            <attribute idx="3" name="Frequency" value="#{1.0472,1,0.5236}"/>
+         </attributes>
+      </node>
+   </nodes>
+   <ses_variables>
+      <ses_variable idx="1" name="VSS_MODE" value="1"/>
+      <ses_variable idx="2" name="NumSignals" value="2"/>
+   </ses_variables>
+   <ses_functions>
+      <ses_function idx="1" name="LookUpTableDataFcn.m"
+                    path="C:\Users\Danny\Dropbox\WorkOn_SES_Editor_1.1\examples\example1\">
+         <lines>
+            <line idx="1" value="function Data = LookUpTableDataFcn()&#xD;"/>
+            <line idx="2" value="&#xD;"/>
+            <line idx="3" value="Data = tanh([-5:5]);&#xD;"/>
+            <line idx="4" value="&#xD;"/>
+            <line idx="5" value="end"/>
+         </lines>
+      </ses_function>
+      <ses_function idx="2" name="CtrCoupl.m"
+                    path="C:\Users\Danny\Dropbox\WorkOn_SES_Editor_1.1\examples\Example1_neu\">
+         <lines>
+            <line idx="1" value="function [cellArray] = CtrCoupl(Children,Parent,NumSignals)&#xD;"/>
+            <line idx="2" value="&#xD;"/>
+            <line idx="3" value="    switch NumSignals&#xD;"/>
+            <line idx="4" value="        case 1&#xD;"/>
+            <line idx="5" value="            cellArray = {Parent,'1',Children{1},'1';&#xD;"/>
+            <line idx="6" value="                         Children{1},'1',Children{2},'1';&#xD;"/>
+            <line idx="7" value="                         Children{2},'1',Parent,'1'}; &#xD;"/>
+            <line idx="8" value="        case 2&#xD;"/>
+            <line idx="9" value="            cellArray = {Parent,'1',Children{2},'1';&#xD;"/>
+            <line idx="10" value="                         Parent,'2',Children{1},'1';&#xD;"/>
+            <line idx="11" value="                         Children{1},'1',Children{2},'2';&#xD;"/>
+            <line idx="12" value="                         Children{2},'1',Parent,'1'};  &#xD;"/>
+            <line idx="13" value="        case 3&#xD;"/>
+            <line idx="14" value="            cellArray = {Parent,'1',Children{2},'1';&#xD;"/>
+            <line idx="15" value="                         Parent,'2',Children{1},'1';&#xD;"/>
+            <line idx="16" value="                         Children{1},'1',Children{2},'2';&#xD;"/>
+            <line idx="17" value="                         Parent,'3',Children{2},'3';&#xD;"/>
+            <line idx="18" value="                         Children{2},'1',Parent,'1'};&#xD;"/>
+            <line idx="19" value="        otherwise&#xD;"/>
+            <line idx="20" value="            cellArray = cell(1,4);&#xD;"/>
+            <line idx="21" value="    end&#xD;"/>
+            <line idx="22" value="&#xD;"/>
+            <line idx="23" value="&#xD;"/>
+            <line idx="24" value="end"/>
+         </lines>
+      </ses_function>
+      <ses_function idx="3" name="addFun.m"
+                    path="C:\Users\Danny\Dropbox\WorkOn_SES_Editor_1.1\examples\Example1_neu\">
+         <lines>
+            <line idx="1" value="function Inputs = addFun(NumRep)&#xD;"/>
+            <line idx="2" value="&#xD;"/>
+            <line idx="3" value="switch NumRep&#xD;"/>
+            <line idx="4" value="    case 1&#xD;"/>
+            <line idx="5" value="        Inputs = '|+';&#xD;"/>
+            <line idx="6" value="    case 2&#xD;"/>
+            <line idx="7" value="        Inputs = '|++';&#xD;"/>
+            <line idx="8" value="    otherwise&#xD;"/>
+            <line idx="9" value="        Inputs = '|+++';&#xD;"/>
+            <line idx="10" value="        &#xD;"/>
+            <line idx="11" value="end&#xD;"/>
+            <line idx="12" value="end"/>
+         </lines>
+      </ses_function>
+      <ses_function idx="4" name="ModelCoupl.m"
+                    path="C:\Users\Danny\Dropbox\WorkOn_SES_Editor_1.1\examples\Example1_neu\">
+         <lines>
+            <line idx="1" value="function [cellArray] = ModelCoupl(Children,NumSignals)&#xD;"/>
+            <line idx="2" value="&#xD;"/>
+            <line idx="3" value="    switch NumSignals&#xD;"/>
+            <line idx="4" value="        case 1&#xD;"/>
+            <line idx="5" value="            cellArray = {Children{1},'1',Children{2},'1';&#xD;"/>
+            <line idx="6" value="                         Children{2},'1',Children{3},'1'};&#xD;"/>
+            <line idx="7" value="        case 2&#xD;"/>
+            <line idx="8" value="            cellArray = {Children{1},'1',Children{2},'1';&#xD;"/>
+            <line idx="9" value="                         Children{1},'2',Children{2},'2';&#xD;"/>
+            <line idx="10" value="                         Children{2},'1',Children{3},'1'}; &#xD;"/>
+            <line idx="11" value="        case 3&#xD;"/>
+            <line idx="12" value="            cellArray = {Children{1},'1',Children{2},'1';&#xD;"/>
+            <line idx="13" value="                         Children{1},'2',Children{2},'2';&#xD;"/>
+            <line idx="14" value="                         Children{1},'3',Children{2},'3';&#xD;"/>
+            <line idx="15" value="                         Children{2},'1',Children{3},'1'};&#xD;"/>
+            <line idx="16" value="        otherwise&#xD;"/>
+            <line idx="17" value="            cellArray = cell(1,4);&#xD;"/>
+            <line idx="18" value="    end&#xD;"/>
+            <line idx="19" value="&#xD;"/>
+            <line idx="20" value="&#xD;"/>
+            <line idx="21" value="end"/>
+         </lines>
+      </ses_function>
+   </ses_functions>
+   <semantic_conditions>
+      <semantic_condition idx="1" value="ismember(NumSignals,[1,2,3])"/>
+      <semantic_condition idx="2" value="ismember(VSS_MODE,[1,2])"/>
+   </semantic_conditions>
+   <selection_constraints/>
+   <comment>PURPOSE OF MY SES</comment>
+</SES>

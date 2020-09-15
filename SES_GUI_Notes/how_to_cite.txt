@@ -1,0 +1,14 @@
+### How to Cite the SES Toolbox for MATLAB/Simulink and Related Publications ### 
+
+Pawletta, T., Pascheka, D., Schmidt, A. and Pawletta, S. (2014). 
+Ontology-Assisted System Modeling and Simulation within MATLAB/Simulink. 
+SNE Simulation Notes Europe, ARGESIM/ASIM Pub. TU Vienna, Austria, 
+24(2)-8/2014, 59-68 (DOI: 10.11128/sne.24.tn.102241)
+
+Pawletta, T., Pascheka, D. and Schmidt, A. (2015). 
+System Entity Structure Ontology Toolbox for MATLAB/Simulink: 
+Used for Variant Modelling. Proc. of MATHMOD 2015 - 8th 
+Vienna Int. Conf. on Mathematical Modelling, Breitenecker, 
+F., Kugi, A. and Troch, I. (Eds.), February 18 - 20, 
+ARGESIM Report No. 44 (ISBN: 978-3-901608-46-9), 
+ARGESIM, Vienna/Austria UT, 2015, 369-370.

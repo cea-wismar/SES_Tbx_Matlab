@@ -1,0 +1,33 @@
+classdef BasicPanel < DefSett
+    properties
+        hnd
+        parent
+    end
+    
+    methods
+        function obj = BasicPanel(parent,title,varargin)
+            if nargin
+                obj.parent = parent;
+            else
+                obj.parent = figure();
+                title = 'TestPanel';
+                disp(['TEST MODE: ',mfilename])
+            end
+                        
+            %Panel
+            obj.hnd = uiextras.Panel(...
+                'Parent',               obj.parent,...                
+                'Title',                title,...                
+                'BorderType',           'line',...
+                'FontSize',             obj.Font.SizeM,...   
+                'FontName',             obj.Font.NameText,...
+                'ShadowColor',          obj.Color.BG_P,...
+                'HighlightColor',       obj.Color.BC,...
+                'BackgroundColor',      obj.Color.BG_P,...
+                'ForegroundColor',      obj.Color.BC,...                
+                varargin{:});   
+        end
+    end
+end
+
+

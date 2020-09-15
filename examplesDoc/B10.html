@@ -1,0 +1,119 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Using the Toolbox API for Pruning</title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+
+<h1>Using the Toolbox API</h1>
+
+<h2>Motivation</h2>
+<p>
+This example shows, how you can use the toolbox API for pruning your SES apart from the Editor with a MATLAB script. The SES here is taken from example 3, which specifies two system variants.
+
+<details>
+<summary>Basic SES: </summary>
+<img src="images/B03_SES.png" width="700"/>
+</details>
+
+<details>
+<summary>In the SES specified model structures:</summary>
+<img src="images/B10_1.png" width="750"/> 
+</details> 
+</p>
+ 
+
+<h2>Description</h2>	
+
+Have a look to the M-file in the example's directory and execute it at the MATLAB prompt. Subsequently, we will explain some fundamental things.
+<p>
+</p>
+	
+<h3>Transferring SES Variables</h3>
+<p>
+SES Variables provide the input interface for an SES. All input SES Variables are collected in a cell array. It will look like this:
+</p>
+<pre class="codeinput">
+{SES_Variable1,SES_Variable2,SES_Variable3...}
+</pre>
+<p>
+Each SES Variable itself is a cell array of length 2. The first cell contains the 
+name of the SES Variable as string and the second cell defines the value of the SES Variable.
+</p>
+<pre class="codeinput">
+{'myVar1',12.4564}  <b>or</b>  {'vecVar',[1,2,3,4,5]}  <b>or</b>  {'specVar',2}
+</pre>
+
+<p>
+Summarized, it may look like this:
+</p>
+<pre class="codeinput">
+<b>{</b> {'myVar1',12.4564}  ,  {'vecVar',[1,2,3,4,5]}  ,  {'specVar',2} <b>}</b>
+</pre>
+<p>
+The order of the SES Variables in the cell array is not important.
+</p>
+
+
+<h3>The M-Script</h3>
+<p>
+The procedure of using the API for pruning can be separated into 3 steps:
+</p>
+
+<pre class="codeinput">
+<span class="comment">%Load your saved SES and save it to a variable of your choice</span>      
+load('B10_modelSES.mat');
+mySES = new;
+<span class="comment">%Create a PES object and transfer the SES</span>
+newPES = pes(mySES);
+<span class="comment">%start the complete pruning operation and</span>
+<span class="comment">%transfer the input SES Variables with their values</span>
+newPES.prune({{'varVariant',1}});
+<span class="comment">%optional: save PES</span>
+myPES.save('PES_varVariant_is_1.mat')
+</pre>	
+	
+<p>If you need another variant it is enough to repeat the 3rd step with your
+changed variable values.
+</p>
+<img src="images/B10_2.png" width="300"/> 
+
+<h3>Flattening</h3>
+<p>
+If you want to use the Flattening method you need to create an FPES object instead of an
+PES object.
+</p>
+
+<pre class="codeinput">
+<span class="comment">%Load your saved SES and save it to a variable of your choice</span>      
+load('modelSES.mat');
+mySES = new;
+<span class="comment">%Create a FPES object and transfer the SES</span>
+newFPES = newFPES = fpes(mySES);
+<span class="comment">%start the pruning operation and</span> 
+<span class="comment">%transfer the input SES Variables with their values</span>
+newFPES.prune({{'varVariant',1}});
+<span class="comment">%flattening of the PES</span>
+newFPES.flatten;
+<span class="comment">%optional: save FPES</span>
+myFPES.save('FPES_varVariant_is_1.mat')
+<span class="comment">%optional: get Results of FPES</span>
+[LeafNodes,Coupling,Parameters,Validity] = myFPES.getResults;
+</pre>	
+<img src="images/B10_3.png" width="300"/> 
+
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>

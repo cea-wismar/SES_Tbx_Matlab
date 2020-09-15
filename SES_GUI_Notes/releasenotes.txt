@@ -1,0 +1,217 @@
+Release_1.6 (2020/09/08) 
+###########################################################################
+NEW: connection to SESViewEl
+NEW: MASP may have a subtree
+NEW: Pruning of MASP with subtree
+FIX: node rename error
+
+Release_1.5 (2019/03/19) 
+###########################################################################
+FIX: updated findjobj, fix for R2018b 
+
+Release_1.4 (2017/08/24) 
+###########################################################################
+FIX: SES-FUN doesn't work with MultiAsp / update error when chg nodes 
+FIX: CR/LF Problem when loading SES-FUN (to many empty lines are shown)
+FIX: Main folder name now changeable
+FIX: new resizable design
+FIX: added suppoprt for HG2 plot (introduced in Matlab R2014b)
+FIX: bug in tokens class (2 Tokens used same identifier)
+FIX: cleaner indentation in each class of ses toolbox
+FIX: all tabels automatically resize
+FIX: speedup GUI creation using latest release of findjobj-function
+FIX: XML import and export for new versions of MATLAB (rewritten)
+FIX: external Tbx authors are listed with toolboxname in release notes
+FIX: namespaces problem with menu.m, settings.m, props.m, ...
+FIX: if file is not saved before the callback triggers save as...
+FIX: if file is already openend change to this file
+FIX: examples got rework (no redundant files , cleaner file structure,...)
+FIX: Prunning: error if an entity defines no attributes  
+FIX: error msg when add sel con at startup without a node added
+FIX: error renaming nodes with ses_coupling function in same path
+FIX: error when changing between ses-fun or classic coupling scheme
+FIX: SES_Functions will be removed an new created each time pruning starts
+
+NEW: new api funtion for opening (*.xml,*.mat) File or ses obj in GUI
+NEW: SES Debug View which is accessible via GUI-ToggleButton 
+NEW: Comments for SES and NODES
+NEW: Simulink Modellbuilder uses AutoLayout Toolbox to rearrange model
+NEW: gerneric Modellbuilder (DYMOLA, Simulink, Open Modelica)
+NEW: extendet accelarator support (saves as: ctr shift s)
+NEW: some push buttons show a example (picture) as tooltip
+NEW: some menu entries show a example (picture) as tooltip 
+NEW: menu open when overing over via mouse
+NEW: ses_gui object showes information about supervisor and version
+NEW: contact information of super visor added to menu bar
+NEW: preparation for MATLAB APP export (cleaner design, some new icons)
+NEW: opened files now can be changed via tabs instead of menu entry
+NEW: path of current file is shown in the SES GUI status line 
+NEW: accelerators for menu navigation (open, save, close, quit, ...)
+NEW: layout definition in central file (textsize, icon path, ...)
+NEW: additional Toolboxes are included as Zip.file (unziped by first start)
+NEW: Screenshot-Tool included in menu (only Windows)
+NEW: Example-Folder can be opened via menu entry independent from pwd
+NEW: Release Notes / Copyrights / project web page can be accessed via menu 
+NEW: SES Function preview now uses MATLAB syntax highlighting
+NEW: Example documentation is added
+NEW: SES Function are extracted into a Matlab package (+SES_Functions)
+NEW: SESMatFiles functon will find and return all *.mat (Type SES) Files
+NEW: search for *.mat (Type SES) Files via menue
+NEW: TreeView create feature integrated
+NEW: DebugView integrated
+NEW: GUI Layout for better user experience (new icons)
+NEW: saved SESFUNs can be exported
+NEW: extendet API functions for controling of GUI using plain MATLAB 
+NEW: add comment area xml support (ses and nodes)
+NEW: automatic documentation (ses to html) 
+NEW: ses mat-File disp nodes in command window (preview)
+
+BUG: namespace problem for content of folder parser - shadowing other files
+BUG: Linux: some Java exceptions can be displayed when starting the Edt
+BUG: Linux: some figure do not stay in the Foreground even if forced
+BUG: Linux: Copy Figure; Print Figure do not work properly 
+BUG: clear classes shows 2 warnings (Objects of 'DefSett' class exist ...)
+BUG: import of SES Funktion with LF instead of CR/LF (somethimes happens)
+
+TDO: mini version of treeFolderView as some kind of Preview Window 
+TDO: checking SemCond before prunning
+TDO: Copy coupling from one node to another node (dropdown menue)
+TDO: using classic coupling in combination with Coupling-Function
+TDO: Finisch TreeView() functionality (Color, Props, SelCons, ...)
+TDO: Add connection type field for couplings (+add xml support)
+TDO: make ses files interchangeable with python ses toolbox 
+TDO: redesign of prunning API 
+TDO: Import feature for MATLAB/DEVS files
+TDO: consitence check (MB against SES)
+TDO: Model Translator (without flatting)
+TDO: create SES-Funs in a package
+TDO: new examples (PDEVS, Powerwindow, PickAndPlace Maschine, PureVariants)
+TDO: Context sensitiv prunning
+TDO: include ERROR mangament in API function
+TDO: rebuild/redesign of an DATA MODEL independet of visual interface (GUI)
+
+Release_1.3 (2015/01/28)   
+###########################################################################
+MAJOR Release -- No compatibility with R_1.1 
+
+Extension in Couplings
+Output signals are now allowed to be connected with multiple input ports.
+Bug in Flattening algorithm fixed!
+
+
+Release_1.2 (2015/01/06)
+###########################################################################
+Insertion of new examples
+
+
+Release_1.1 (2014/12/04)
+###########################################################################
+add some error messages when user tries to prune via Editor Menu bar.
+Err: when Semantic Conditions are violated.
+Err: When Numrep Value are not Integer greater than 0.
+Resize Behaviour under Linux improved.
+drawnow comments are added
+
+
+Release_1.1 (2014/11/13)
+###########################################################################
+Warning message when node will be replaced or deleted.
+
+Reloading SES Functions:
+Update of an imported SES Function is now possible, when name of the 
+Function is equal.
+
+Close Model:
+Close Model is now available over File-menubar. Closing the last opened 
+Model leads to open a new Model.
+
+Merging BUG: fixed!
+
+Change Names:
+Semantic Relations -> Semantic Conditions
+Output Port -> From Port
+Input Port -> To Port
+
+Horizontal Slider for Function Preview added
+
+Limitation: Slider disappears sometimes. You can get it back by clicking 
+"Optimal Resolution" in file menu bar.
+
+Displacement of NumRep Interval:
+The Interval is now adjustable in the Coupling input mask of MAspects.
+
+Function Syntax:
+Syntax has changed. The generall usage of Functions in MATLAB is now 
+possible. The previews Syntax is not 
+supported anymore.
+NOT ALLOWED: {@strcmp,'a',{'asd','a',var}}
+ALLOWED:       strcmp('a',{'asd','a',var})
+
+Displacement of Semantic Conditions:
+Sem. Cond. are now adjustable in the SES Vars input mask.
+
+New Resolution has been added -> 1920x1200
+
+Selection Behaviour of Nodes:
+Add Sibling Node -> The created node will be selected.
+Replace node selection has been improved.
+
+Color Information of Selection Constraints:
+Color Infos are now saved in the SES. Change of SES Structure will lead to 
+error messages to SES's that has 
+been created with an older Release of the Editor.
+
+Dependencies in SES Variables:
+Now SES Variables can be depended from each other.
+
+Bug in Selection Constraints:
+Changing name of an inner node is now possible, when having Selection 
+Constraints.
+
+
+Release_1.1 (2014/10/10)
+###########################################################################
+Bug in pes-class- Evaluation of Functions in Attributes (evalFunInAtt):
+Problem: Attribute Values doesn`t support vectors/Matrices, that are 
+transfered by SES Variables.
+Now it is possible. FIXED!
+
+Parser Vector -> empty Vectors [] are allowed now
+
+
+Release_1.1 (2014/10/06)
+###########################################################################
+Adding of different screen resolution for GUI:
+
+The GUI has been implemented for default resolution 1600x900.
+Additionally following fixed resolutions are supported: 1600x900, 1440x900,
+1366x768, 1280x1024
+
+The properties of each resolution are coded in a table in 
+./data/resolution.xlsx
+
+The table is loaded by the Editor automatically.
+Using the menu (File -> Optimal Resolution) a method can be called that 
+determines the optimal resolution depending on the current figure size.
+Furthermore this method is automatically called when figure is maximized
+
+
+Release_1.1 (2014/09/29)
+###########################################################################
+1st adaptation to Linux compatibility;
+Reorganisation of files in subdirectories;
+
+Automatic adding of SES toolbox paths to MATLAB search path:
+1. Start MATLAB,
+2. Change into the directory SES_Editor_1.1 
+3. Start the editor from MATLAB prompt using ses_gui
+
+Changes for 'MAspect' node attribute 'Number_of_Replications':
+The user has to assign for this attribute at each MAspect node a 
+SES Variable or SES Function.
+It is possible to use the same SES Variable or SES Function on different 
+MAspect nodes.
+This feature extends the flexibility of MAspect nodes,
+e.g. it is possible to define selection constraints beetwen MAspect nodes.
+
+Fixing of some bugs;

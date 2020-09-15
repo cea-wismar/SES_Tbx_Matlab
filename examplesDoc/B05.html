@@ -1,0 +1,129 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Constraints Between Decision Nodes</title>
+  
+ <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+
+<h1>Constraints Between Decision Nodes</h1>
+
+
+<h2>Motivation</h2>
+<p>
+This example shows, how you can define constraints between decision nodes. The problem statement is analogous to example 3, where it is solved using Aspect-Siblings. The SES specifies 2 different model variants.
+
+<details>
+<summary>Basic SES: </summary>
+<img src="images/B05_SES.png" width="700"/>
+</details>
+
+<details>
+<summary>In the SES specified model structures:</summary>
+<img src="images/B05_1.png" width="750"/> 
+</details> 
+</p>
+
+
+<h2>Entities</h2>
+<p>
+Variant 1 - The model consist of:
+</p>
+<ul>
+	<li> <b>atomic models (AM):</b> B, C, D1 </li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+
+<p>
+Variant 2 - The model consist of:
+</p>
+<ul>
+	<li> <b>atomic models (AM):</b> B, D2</li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+
+
+<h2>Description</h2>
+
+<h3>Connecting Decision Nodes by Selection Contraints</h3>
+<p>
+If you define a set of model variants, where the selection of a component requires the selection of another component you can specify this using Selection Constraints. You can define Selection Contraints under the tab SelConst. In this example, the specialized component D1 must always be selected when the Aspect variant1DEC is chosen and D2
+has to be selected when the Aspect variant2DEC is chosen. Hence, you have to define the Aspects variant1DEC and variant2DEC as sources (From) and the entities 
+D1, D2 as sinks (To).
+</p>
+
+<!--
+<h3>Notice</h3>
+<p>
+Defining a selection constraint doesn't mean, that the selection rule of
+one decision node is copied into the other decision node. It's more than
+that. It checks if the source node is part of the PES, if this is the case
+the sink node is selected as well.
+</p> -->
+
+
+<h3>Navigation in Tab SelConst</h3>
+<p>
+You can also choose more sink nodes for one source node. A source node
+can only exist one time in the table. In order to select nodes for a constraint,
+click on the desired node in the tree and use the arrow buttons to insert or extract it.
+</p>
+
+
+<h3>Constraints including MultiAspects</h3>
+<p>
+If you want define selection constrains with dependencies from the Number Of Replications (NOF) property of MultiAspects, you have to use SES Functions. Basics to SES Functions are discussed in example 7.
+</p>
+
+<!-- ######################################################## -->
+<p>
+Following, the basic procedure for specifying such cases using SES Functions.
+</p>
+
+<p>
+CASE 1:
+<ul>  
+        <li>Source: Aspect Siblings OR Spec OR MAspect</li>
+	<li>Sink: MAspect</li>
+</ul>
+</p>
+
+<p>
+Define at the sink MultiAspect the NOF property via an SES Function (e.g. myNumRepFcn), whose input parameter codes the current value for the NOF property depending on an SES Variable (e.g. sourceVar), whose value is set at the source node, such as	
+<ul>
+	<li>myNumRepFcn(sourceVar)</li> 
+</ul>
+</p>
+
+<p>
+CASE 2:
+<ul>
+	<li>Source: MAspect</li>
+	<li>Sink: Aspect Siblings OR Spec</li>
+</ul>
+Define Selection Rules for the sink node via an SES Function, whose input parameter codes the current value of the NOF property of MAspect (e.g. numRep) and controls the selection at the sink node, such as	
+</p>
+<ul>
+	<li>mySelRuleFcn(numRep) </li> 	
+</ul>
+<!-- ######################################################## -->
+
+
+<h3>Limitation</h3>
+<p>
+Not all decision nodes in an SES are connectable using Selection Constraints. It depends on the hierarchical structure. Decision nodes in the same tree path are not connectable.
+</p>
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>

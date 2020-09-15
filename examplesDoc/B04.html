@@ -1,0 +1,95 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Variant Modelling Using a MultiAspect</title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+<h1>Variant Modelling Using a MultiAspect<br>
+    (special kind of has-a relation)</h1>
+
+<h2>Motivation</h2>
+<p>
+This example shows, how you can describe different model structures consisting of a varying number of replications of components from the same type in a single SES by using a MultiAspect. In the example, a model component A can be composed by a different number of replications of a model of type B. Here, the component A should be able to consist of one or two components of type B.
+
+<details>
+<summary>Basic SES: </summary>
+<img src="images/B04_SES.png" width="700"/>
+</details>
+
+<details>
+<summary>In the SES specified model structures:</summary>
+<img src="images/B04_1.png" width="750"/> 
+</details> 
+</p>
+
+
+<h2>Entities</h2>
+<p>
+Variant 1 - The model consist of:
+</p>
+<ul>
+	<li> <b>atomic models (AM):</b> B, D</li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+
+<p>
+Variant 2 - The model consist of:
+</p>
+<ul>
+	<li> <b>atomic models (AM):</b> 2xB, D</li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+
+
+<h2>Description</h2>
+<h3>Adding a MultiAspect</h3>
+<p>
+Has-a relations with a number of entities from the same type can be described by a MultiAspect. However, currently the <u>TOOLBOX LIMITS</u> the usage of MultiAspects, that after a MultiAspect must follow an entity that is a leaf node. A MultiAspect is a special kind of Aspect. Beside the two Aspect properties Aspectrule (for siblings) and Couplings it has a third property, called Number Of Replications.
+</p>
+
+<h3>Number Of Replications</h3>
+<p>
+In order to define, how many replications should be used, you need to set the Number 
+Of Replications. You can define it with a fixed integer value, an SES Variable or an 
+SES Function. In the example, the SES Variable "numRep" is used to set the Number 
+Of Replications.
+</p>
+
+<h3>SES Variables &amp; Semantic Conditions</h3>
+<p>
+basic explanation see ex. 2
+</p>
+
+
+<h3>Couplings</h3>
+<p>
+Defining couplings at a MultiAspect is the same procedure as for Aspects with
+the exception, that you have to specify couplings for each possible variant of Number Of Replications. In the example defines 2 variants, with eighter one or two components of "B". 
+Hence, you have to define for both cases the couplings separately. Use the popup to switch through the cases. The interval values allow you to set couplings for each replication number that lies in the open interval.
+</p>
+
+<h3>Aspectrule</h3>
+<p>
+The example did not defines an Aspectrule, because there are no Aspect Siblings. 
+</p>
+
+
+<h3>REMARK</h3>
+<p>
+Notice, when prunig the SES the the names of the replicated "B" component(s) will be extended by numbers into B_1 (and B_2). This is caused by the Valid Brothers axiom, which says, that sibling nodes must not have equal names.
+</p>
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>

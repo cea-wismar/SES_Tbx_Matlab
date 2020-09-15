@@ -1,0 +1,102 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Variant Modelling Using Specializations</title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+
+<h1>Variant Modelling Using Specializations<br>
+    (is-a relation)</h1>
+
+<h2>Motivation</h2>
+<p>
+This example shows, how you can describe different model structures in a single SES by using Specializations. The SES specifies two model structures (variants) using a general entity B that is specialized by an entity Bx or By (taxonomy).
+
+<details>
+<summary> Basic SES model: </summary>
+<img src="images/B02_SES.png" width="700"/>
+</details>
+
+<details>
+<summary>In the SES specified model structures:</summary>
+<img src="images/B02_1.png" width="750"/> 
+</details>
+</p>
+
+<h2>Entities</h2>
+<p>
+Variant 1 - The model consist of:
+<ul>
+	<li> <b>atomic models (AM):</b> Bx, C, D</li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+</p>
+
+<p>
+Variant 2 - The model consist of:
+<ul>
+	<li> <b>atomic models (AM):</b> By, C, D</li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+</p>	
+
+<h2>Description</h2>
+
+<h3>Adding a Specialization</h3>
+<p>
+Specializations describe a is-a relation between entities.
+In the example, the 2 model variants consist of an component A, which is composed by different
+specializations (Bx, By) of a component B.
+In order to describe these 2 variants you need to add a Specialization
+to the component B. A Specialization 
+always represents a decision node. The selection decision can be defined using a  
+Specialization Rule (Specrule) as following or by Selection Constraints (see ex. 5).  
+</p>
+
+<h3>SES Variables</h3>
+<p>
+In order to control the selection of variants during pruning using specialization rules you need to add SES Variables to your SES model.
+Here the SES Variable "varVariant" is defined. You can specify default
+values for SES Variables. SES Variables have a global scope.
+</p>
+
+<h3>Semantic Conditions</h3>
+<p>
+It is conventional to define the valid domain for each SES
+Variable. This can be done by using Semantic Conditions. You can enter any 
+kind of MATLAB conform condition statement to describe it. Here the SES Variable "varVariant" can 
+only have the value "1"or "2", that is defined with:
+</p>
+
+ 
+<ul>
+	<li> ismember(varVariant, [1,2])</li> 	
+</ul>		
+
+
+<h3>Specialization Rule (Specrule)</h3>
+<p>
+After defining the SES Variable you can set the Specrule. Select the Spec-Node and add your conditions. A Specrule consist of a condition and a selection, that occurs, when the condition is valid. Be sure not to enter conditions, that could be valid at the same time, as it will lead to an error message during pruning.	
+</p>
+
+<h3>REMARK</h3>
+<p>
+Specialized systems are in a parent-child inheritance relation. The examples 8 and 9 use inheritance mechanisms. For detailed information regarding the inheritance axiom see B.P. Zeigler and P.E. Hammonds "Modeling and Simulation-Based Data Engineering", Elsevier, 2007. 	
+</p>
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>
+
+

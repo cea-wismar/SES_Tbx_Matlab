@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Aspect Inheritance and Priorities</title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+
+<h1>Aspect Inheritance and Priorities</h1>
+
+
+<h2>Motivation</h2>
+<p>
+This example shows, how you can use the Priority property
+of Aspect and MultiAspect nodes to solve decision problems caused by Aspect Inheritance. The concept of Aspect Inheritance is shown in the figure by the SES of this example.
+In the following, the term Aspect is generally used for Aspects and MultiAspects, because the problem caused by inheritance is the same for both node types. 
+</p>
+
+<img src="images/B09_SES.png" width="700"/> 
+
+
+<h2>Description</h2>
+<p>
+Basically, such a decision problem occurs under the following two conditions.
+</p>
+<ol>
+	<li> There is a Specialization, that has at least one Aspect Sibling.</li> 
+	<li> At least one of the Specialization's children is from type Aspect. </li> 
+</ol>
+</p>		
+In the example, the Specialization "genreSPEC" and the Aspect "structureDEC" are 
+Siblings. Furthermore, "genreSPEC" possess a node from type Aspect, named
+"chapterDEC", in its path.
+</p>
+
+<h3>Aspect Inheritance</h3>
+<p>
+The inheritance axiom says that the parent entity and a selected child entity of a Specialization unify there names, attributes and there Aspects(!!!). That means for this example, when the Specialization
+node "genreSPEC" is resolved during pruning with the child entity "Biography", the entity "Book" inherits the Aspect "chapterDEC" as its next child. You can check it out by
+using the <b>First-Level-Pruning</b> operation. When you start this pruning operation
+you may see that there is a decision problem. The nodes "chapterDEC" and "structureDEC" are now in the same level and because they are siblings they form a decision (see figure). This kind of decision can be solved by setting the Priority property defined at Aspects. 
+</p>
+
+<h3>Aspect Priorities</h3>
+<p>
+The Aspect Priority property has a global scope. Each Aspect that is involved in such a decision problem needs a Priority value. When Aspects are inherited, these values will be 
+compared to each other during pruning and the Aspect with the highest priority value is chosen. If all of the values are equal, none of them is chosen.
+Only the <b>Complete Pruning</b> operation allows the evaluation of priorities.
+Note that, the <b>Flattening</b> operation also includes complete pruning.
+</p>
+
+
+<h3>Detect Aspect Inheritance</h3>
+<p>
+In large models it might be quite difficult to detect such cases on your own. That's
+why a feature is included that does the work for you. You find it in the menu bar
+"Pruning/Check/Decisions by Inheritance". It provides a list with all Aspect Siblings
+that exist in your SES. The icons of the aspects that are named in the selected row
+will change their appearance. If you use this method for this example it will only show 
+one single row with the connected Aspects "chapterDEC" and "structureDEC".
+</p>
+
+<h3>Priority Functions</h3>
+<p>
+To assign values to the Priority property you have 3 options:
+<p>
+<ol>
+	<li> You can assign fixed integer values, which means you will always select the 	Aspect that has the highest priority.</li> 
+	<li> If you want to specify a variable selection you can use SES Variables.</li> 
+	<li> A disadvantage of option two is, that you need one SES Variable for each Aspect. 		If you want to make the selection depending on only one SES Variable, you can use an SES Function.</li> 
+</ol>
+<p>
+In the example the third option is chosen. At both Aspects, "chapterDEC" and "structureDEC", the same SES Function "prioFcn(...)" is called. You can explore how it works by looking
+at the source code of the SES Function "prioFcn" in the SES model.
+</p>
+
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>

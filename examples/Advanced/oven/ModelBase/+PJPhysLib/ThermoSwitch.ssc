@@ -1,0 +1,42 @@
+component ThermoSwitch
+% ThermoSwitch
+
+nodes
+    thIn1 = foundation.thermal.thermal;   % :left
+    thIn2 = foundation.thermal.thermal;   % :left
+    thOut = foundation.thermal.thermal;   % :right
+end
+
+inputs
+    control = {0, '1'};  % :left
+end
+
+parameters
+  G = {1, 'W/K'};    % conductance of unused port to reference point
+  Tref = {300, 'K'};  % temperature of reference point for unused port
+end
+
+variables
+    Q1 = {0, 'J/s'}; % heat flow into thIn1
+    Q2 = {0, 'J/s'}; % heat flow into thIn2
+    Q  = {0, 'J/s'}; % heat flow into thOut    
+end
+
+branches
+    Q1: thIn1.Q -> *;
+    Q2: thIn2.Q -> *;
+    Q:  thOut.Q -> *;
+end
+
+equations
+  if control < 0.5
+    thOut.T == thIn1.T;
+    Q == -Q1;
+    Q2 == G*(thIn2.T - Tref);
+  else
+    thOut.T == thIn2.T;
+    Q == -Q2;
+    Q1 == G*(thIn1.T - Tref);
+  end
+end
+end

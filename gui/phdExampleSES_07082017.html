@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="ie=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>phdExampleSES_07082017.mat</title>
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"><style type="text/css">
+	html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,font,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td{margin:0;padding:0;border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent}body{line-height:1}ol,ul{list-style:none}blockquote,q{quotes:none}blockquote:before,blockquote:after,q:before,q:after{content:;content:none}:focus{outine:0}ins{text-decoration:none}del{text-decoration:line-through}table{border-collapse:collapse;border-spacing:0}
+	html { min-height:100%; margin-bottom:1px; }
+	html body { height:100%; margin:5px; font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#000; line-height:140%; background:#fff none; }
+	html body td { vertical-align:top; text-align:left; }
+	h1 { padding:0px; margin:0px 0px 25px; font-family:Arial, Helvetica, sans-serif; font-size:1.5em; color:#d55000; font-weight:bold; line-height:100%; }
+	h2 { padding:0px; margin:0px 0px  8px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#d55000; font-weight:bold; line-height:140%; border-bottom:1px solid #d6d4d4; display:block; }
+	h3 { padding:0px; margin:0px 0px  10px; font-family:Arial, Helvetica, sans-serif; font-size:1.2em; color:#000;    font-weight:bold; line-height:100%; }
+	p  { padding:0px; margin:0px 0px 20px; }
+	img { padding:0px; margin:0px 0px 20px; border:none; }
+	p img, pre img, tt img, li img, h1 img, h2 img { margin-bottom:0px; }
+	table th { padding: 2px 8px 2px 0px; text-align:left; vertical-align:middle; font-weight:bold; }
+	table td { padding: 2px 8px 2px 0px; text-align:left; vertical-align:top; }
+	ul{
+	  border-left: 0px solid LightGray;
+	  padding:0em 0em 0em 0em;
+	  margin: 0em 0em 0em 0em;
+	  list-style-position: inside;
+	}
+	  li a:hover {
+	  background-color: DodgerBlue;
+	}
+	li{
+	  padding:0em 0em 0em 1.5em;
+	  margin: 0em 0em 0em 0em;
+	  text-indent:0em;
+	  vertical-align: top;  
+	}
+	li[data-type="Aspect"]{
+	 list-style-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABsSURBVDhPY+ALmvWfEgw2gBzw798/ygwAAYIGgOQIyQ8iA2CKicUwPWADYCFKCkY14O9fFAkQABmKDSCrA9EYXiAEkNWBaKIMQHYNTB3M1dRzASGALUxIMgAboJ4B2PFMKJ71nz8QQmPiWf8Bpk4m1IZbXTEAAAAASUVORK5CYII=');
+	}
+	li[data-type="Spec"]{
+	  list-style-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAAB4SURBVDhPvY8LDoAgDEM9gfFqejw4K8PU2Dn88TM2aXBlvtBhXHzs8QZokYj0AaBHADKbn2cKWTFgmt0+HVIA+lgRgJxdXwEcasx/9AX2ssQpIITkwoo1+G33cF4q5MQ9wv4DsIbdw6mAFimA9Fp994K83U0G+7gCJFAbJL4EOTsAAAAASUVORK5CYII=');
+	}
+	li[data-type="MAspect"]{
+	 list-style-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACWSURBVDhPpZANDkAwDEadQEQcDIcTP1edja/xNR3DwkuadWu9rYqyX8KfEMEXnHP/BCApaNpBCgBrKifYXwS2seqmULej5DirullyogLv/XEUC+5ygr2+gA25wW/0BbaYE7FgXaOCBXKOaC8CWC8jvME+yh4FvNnCviwBQTNltg+rCp4Qwf6fzrwKUiNYsl9whwq+xxI2z0wPCAfZKTUAAAAASUVORK5CYII=');
+	}
+	li[data-type="Node"]{
+	 list-style-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAACSSURBVDhPpZIBDoQgDAT5/9t8EqBZw+AKlRidpDnaq0NtTFtK+584BV8JBSXndrqotfYbaymtGgjUqIhA4BdMAkCETL8InEcBzYTXHOWTYGwkH+tCeRf4mIwO1OkF5bcJdPYtgxb3S/B6iVGToK4o9nrKb4LoJnJiKQB/gP/9DMpDgdA02kf0acNS8IYu+B5pPwCr9BOEKePcagAAAABJRU5ErkJggg==');
+	}
+	li[data-type="Entity"]{
+	 list-style-image:url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsQAAA7EAZUrDhsAAABiSURBVDhPzZHBCcAgEATTk9XakzWdMoEDTVYxmkAG9nGrDqJHiCnv5BSsYGZ7AvhOQHeNgv4mUAdUB3SNoLcR1BqzFIxSwzx9A8Ujga/x/w7zu4/o+IE6CnopmOVHgvWkXAAwfHTj79aOiwAAAABJRU5ErkJggg==');
+	}
+	pre, code { font-size:12px; }
+	tt { font-size: 1.2em; }
+	pre { margin:0px 0px 20px; }
+	pre.codeinput { padding:10px; border:1px solid #d3d3d3;  }
+	pre.codeoutput { padding:10px 11px; margin:0px 0px 20px; color:#4c4c4c; }
+	pre.error { color:red; }
+	@media print { pre.codeinput, pre.codeoutput { word-wrap:break-word; width:100%; } }
+	span.keyword { color:#0000FF }
+	span.comment { color:#228B22 }
+	span.string { color:#A020F0 }
+	span.syscmd { color:#B28C00 }
+	hr   {border-color: black; height: 5px;}
+	.clt, .clt ul, .clt li {
+	 position: relative;
+	}
+	.clt ul {
+		list-style: none;
+		padding-left: 0px;
+		list-style-position: inside;
+		//list-style: none;		
+	}	
+	.clt li::before, .clt li::after {
+		content: "";
+		position: absolute;
+		left: 26px;
+	}	
+	.clt li::before {
+		border-top: 1px solid;
+		top: 7px;
+		width: 10px;
+		height: 0px;
+	}	
+	.clt li::after {
+		border-left: 1px solid;
+		height: 100%;
+		width: 0px;
+		top: -4px;
+	}	
+	.clt ul > li:last-child::after {		
+		height: 12px;
+		top: -4px;		
+	}	
+	.clt ul > li:first-child::before {	
+		border-top: none;		
+	}	
+	.clt ul > li:first-child::after {	
+		top: 2px;
+		height: 0px;	
+	}	
+</style>
+
+</head>
+<body><h1 id="TOP" >phdExampleSES_07082017.mat </h1><p><strong>Published: </strong>07-Sep-2017 21:09:07<br /><br /></p>
+
+<div class="w3-row">
+<div class="w3-half w3-container" style="padding:0; margin:0";>
+<h3>System Entity Structure </h3>
+
+<div class="clt">
+<ul style="border-style:hidden;"><li data-type="Entity"><a href="#ComplexExperiment"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">ComplexExperiment</a></li>
+<li><ul ><li data-type="Aspect"><a href="#ComplexExperiment/CEDec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">CEDec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">ExperimentMethod</a></li>
+<li><ul ><li data-type="Spec"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">EMSpec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Screening</a></li>
+<li><ul ><li data-type="Spec"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening/SCSpec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">SCSpec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening/SCSpec/DesignOfExperiment"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">DesignOfExperiment</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening/SCSpec/ElementaryEffect"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">ElementaryEffect</a></li></ul></li>
+</ul></li>
+</ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">SensitivityAnalysis</a></li>
+<li><ul ><li data-type="Spec"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis/SASpec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">SASpec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis/SASpec/Sobol"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Sobol</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis/SASpec/ExtFAST"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">ExtFAST</a></li></ul></li>
+</ul></li>
+</ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Optimization</a></li>
+<li><ul ><li data-type="Spec"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization/OPTSpec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">OPTSpec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization/OPTSpec/GeneticAlgorithm"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">GeneticAlgorithm</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization/OPTSpec/SimulatedAnnealing"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">SimulatedAnnealing</a></li></ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationMethod"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">SimulationMethod</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">SimulationModel</a></li>
+<li><ul ><li data-type="Aspect"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">SimMDec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">ExperimentalFrame</a></li>
+<li><ul ><li data-type="Aspect"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">EFDec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Generator"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Generator</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Transducer</a></li>
+<li><ul ><li data-type="Aspect"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T1Dec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">T1Dec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T1Dec/SCaSA"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">SCaSA</a></li></ul></li>
+</ul></li>
+
+<li><ul ><li data-type="Aspect"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T2Dec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">T2Dec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T2Dec/SCaSA"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">SCaSA</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T2Dec/TargetFunction"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">TargetFunction</a></li></ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">ProcessChain</a></li>
+<li><ul ><li data-type="Aspect"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">PCDec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO1"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">FIFO1</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TurningMachines"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">TurningMachines</a></li>
+<li><ul ><li data-type="MAspect"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TurningMachines/TMMAsp"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">TMMAsp</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TurningMachines/TMMAsp/TurningMachine"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">TurningMachine</a></li></ul></li>
+</ul></li>
+</ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO2"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">FIFO2</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">HardeningFurnace</a></li>
+<li><ul ><li data-type="Spec"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">HFSpec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec/Type1"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Type1</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec/Type2"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Type2</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec/Type3"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Type3</a></li></ul></li>
+</ul></li>
+</ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO3"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">FIFO3</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">TemperingFurnace</a></li>
+<li><ul ><li data-type="Spec"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">TFSpec</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec/Type1"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Type1</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec/Type2"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Type2</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec/Type3"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">Type3</a></li></ul></li>
+</ul></li>
+</ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO4"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">FIFO4</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/GrindingMachines"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">GrindingMachines</a></li>
+<li><ul ><li data-type="MAspect"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/GrindingMachines/GMMAsp"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">GMMAsp</a></li>
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/GrindingMachines/GMMAsp/GrindingMachine"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">GrindingMachine</a></li></ul></li>
+</ul></li>
+</ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/PathCombiner"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">PathCombiner</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/MuxStock"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">MuxStock</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/MuxLoad"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">MuxLoad</a></li></ul></li>
+
+<li><ul ><li data-type="Entity"><a href="#ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/MuxUtilization"; style="text-decoration: none; vertical-align:top; font-weight:normal; color:#000">MuxUtilization</a></li></ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</div></div>
+<div class="w3-half w3-container" style="padding:0; margin:0"; >
+<h3>SES Variables</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>HF</td><td>1</td>
+</tr>
+<tr>
+	<td>TF</td><td>1</td>
+</tr>
+<tr>
+	<td>numRepTM</td><td>3</td>
+</tr>
+<tr>
+	<td>numRepGM</td><td>3</td>
+</tr>
+<tr>
+	<td>EM</td><td>'sa'</td>
+</tr>
+<tr>
+	<td>OPT</td><td>'ga'</td>
+</tr>
+<tr>
+	<td>SC</td><td>'ee'</td>
+</tr>
+<tr>
+	<td>SA</td><td>'sob'</td>
+</tr>
+
+</table><br />
+
+<h3>Semantic Conditions</h3>
+<table>
+<tr><th>Condition</th><tr><tr>
+	<td>ismember(HF,[1,2,3])</td>
+</tr>
+<tr>
+	<td>ismember(TF,[1,2,3])</td>
+</tr>
+<tr>
+	<td>ismember(numRepTM,[1,2,3])</td>
+</tr>
+<tr>
+	<td>ismember(numRepGM,[1,2,3])</td>
+</tr>
+<tr>
+	<td>ismember(EM,{'sc','sa','opt'})</td>
+</tr>
+<tr>
+	<td>ismember(OPT,{'ga','sa'})</td>
+</tr>
+<tr>
+	<td>ismember(SC,{'ee','doe'})</td>
+</tr>
+<tr>
+	<td>ismember(SA,{'sob','exf'})</td>
+</tr>
+
+</table><br />
+
+<br /><h3>SES Functions</h3>
+<details><summary>cplgFunPC.m</summary><pre class="codeinput"><span class="keyword">function </span>cplg = cplgFunPC(numRepTM,numRepGM)
+
+<span class="comment">%% initialization of couplings cell-array</span>
+cplg = {};
+
+<span class="comment">%% parts couplings</span>
+<span class="keyword">for </span>i = 1:numRepTM <span class="comment">% couplings <span class="keyword">for </span>TurningMachines</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'FIFO1'</span>,[<span class="string">'OUT'</span>,num2str(i)],<span class="string">'TurningMachines'</span>,[<span class="string">'IN'</span>,num2str(i)]};
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'TurningMachines'</span>,[<span class="string">'OUT'</span>,num2str(i)], <span class="string">'FIFO2'</span>,[<span class="string">'IN'</span>,num2str(i)]};
+<span class="keyword">end</span>
+
+<span class="keyword">for </span>i = 1:numRepGM <span class="comment">% couplings <span class="keyword">for </span>GrindingMachines</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'FIFO4'</span>,[<span class="string">'OUT'</span>,num2str(i)], <span class="string">'GrindingMachines'</span>,[<span class="string">'IN'</span>,num2str(i)]};
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'GrindingMachines'</span>,[<span class="string">'OUT'</span>,num2str(i)], <span class="string">'PathCombiner'</span>,[<span class="string">'IN'</span>,num2str(i)]};
+<span class="keyword">end</span>
+
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'FIFO2'</span>,<span class="string">'OUT1'</span>,<span class="string">'HardeningFurnace'</span>,<span class="string">'IN'</span>};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'HardeningFurnace'</span>,<span class="string">'OUT'</span>,<span class="string">'FIFO3'</span>,<span class="string">'IN1'</span>};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'FIFO3'</span>,<span class="string">'OUT1'</span>,<span class="string">'TemperingFurnace'</span>,<span class="string">'IN'</span>};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'TemperingFurnace'</span>,<span class="string">'OUT'</span>,<span class="string">'FIFO4'</span>,<span class="string">'IN1'</span>};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'PathCombiner'</span>,<span class="string">'OUT'</span>,<span class="string">'ProcessChain'</span>,<span class="string">'OUT'</span>};
+
+<span class="comment">%% gCode couplings</span>
+
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'ProcessChain'</span>,<span class="string">'gCodeT'</span>,<span class="string">'TurningMachines'</span>,<span class="string">'gCode'</span>};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'ProcessChain'</span>,<span class="string">'gCodeG'</span>,<span class="string">'GrindingMachines'</span>,<span class="string">'gCode'</span>};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'ProcessChain'</span>,<span class="string">'IN'</span>,<span class="string">'FIFO1'</span>,<span class="string">'IN1'</span>};
+
+<span class="comment">%% stock couplings</span>
+<span class="keyword">for </span>i = 1:4
+    cplg(<span class="keyword">end</span>+1,:) = {[<span class="string">'FIFO'</span>,num2str(i)],<span class="string">'stock'</span>,<span class="string">'MuxStock'</span>,[<span class="string">'In'</span>,num2str(i)]};
+<span class="keyword">end</span>
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'MuxStock'</span>,<span class="string">'Out'</span>,<span class="string">'ProcessChain'</span>,<span class="string">'stock'</span>};
+
+<span class="comment">%% load couplings</span>
+<span class="keyword">for </span>i = 1:numRepTM <span class="comment">% couplings <span class="keyword">for </span>TurningMachines</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'TurningMachines'</span>,[<span class="string">'load'</span>,num2str(i)],<span class="string">'MuxLoad'</span>,[<span class="string">'In'</span>,num2str(i)]};
+<span class="keyword">end</span>
+
+<span class="keyword">for </span>i = 1:numRepGM <span class="comment">% couplings <span class="keyword">for </span>GrindingMachines</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'GrindingMachines'</span>,[<span class="string">'load'</span>,num2str(i)],<span class="string">'MuxLoad'</span>,[<span class="string">'In'</span>,num2str(i+numRepTM)]};
+<span class="keyword">end</span>
+
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'HardeningFurnace'</span>,<span class="string">'load'</span>,<span class="string">'MuxLoad'</span>,[<span class="string">'In'</span>,num2str(numRepTM+numRepGM+1)]};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'TemperingFurnace'</span>,<span class="string">'load'</span>,<span class="string">'MuxLoad'</span>,[<span class="string">'In'</span>,num2str(numRepTM+numRepGM+2)]};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'MuxLoad'</span>,<span class="string">'Out'</span>,<span class="string">'ProcessChain'</span>,<span class="string">'load'</span>};
+
+<span class="comment">%% utilization couplings</span>
+<span class="keyword">for </span>i = 1:numRepTM <span class="comment">% couplings <span class="keyword">for </span>TurningMachines</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'TurningMachines'</span>,[<span class="string">'util'</span>,num2str(i)],<span class="string">'MuxUtilization'</span>,[<span class="string">'In'</span>,num2str(i)]};
+<span class="keyword">end</span>
+
+<span class="keyword">for </span>i = 1:numRepGM <span class="comment">% couplings <span class="keyword">for </span>GrindingMachines</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'GrindingMachines'</span>,[<span class="string">'util'</span>,num2str(i)],<span class="string">'MuxUtilization'</span>,[<span class="string">'In'</span>,num2str(i+numRepTM)]};
+<span class="keyword">end</span>
+
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'HardeningFurnace'</span>,<span class="string">'util'</span>,<span class="string">'MuxUtilization'</span>,[<span class="string">'In'</span>,num2str(numRepTM+numRepGM+1)]};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'TemperingFurnace'</span>,<span class="string">'util'</span>,<span class="string">'MuxUtilization'</span>,[<span class="string">'In'</span>,num2str(numRepTM+numRepGM+2)]};
+cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'MuxUtilization'</span>,<span class="string">'Out'</span>,<span class="string">'ProcessChain'</span>,<span class="string">'util'</span>};
+
+
+
+
+
+
+
+
+</pre></details><details><summary>cplgFunTMs.m</summary><pre class="codeinput"><span class="keyword">function </span>cplg = cplgFunTMs(numRepTM)
+
+<span class="comment">%% initialization of couplings cell-array</span>
+cplg = {};
+
+<span class="keyword">for </span>i = 1:numRepTM
+    <span class="comment">%% parts couplings</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'TurningMachines'</span>,[<span class="string">'IN'</span>,num2str(i)],[<span class="string">'TurningMachine_'</span>,num2str(i)],<span class="string">'IN'</span>};
+    cplg(<span class="keyword">end</span>+1,:) = {[<span class="string">'TurningMachine_'</span>,num2str(i)],<span class="string">'OUT'</span>,<span class="string">'TurningMachines'</span>,[<span class="string">'OUT'</span>,num2str(i)]};
+    
+    <span class="comment">%% gCode couplings</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'TurningMachines'</span>,<span class="string">'gCode'</span>,[<span class="string">'TurningMachine_'</span>,num2str(i)],<span class="string">'gCode'</span>};
+    
+    <span class="comment">%% load couplings</span>
+    cplg(<span class="keyword">end</span>+1,:) = {[<span class="string">'TurningMachine_'</span>,num2str(i)],<span class="string">'load'</span>,<span class="string">'TurningMachines'</span>,[<span class="string">'load'</span>,num2str(i)]};
+    
+    <span class="comment">%% utilization couplings</span>
+    cplg(<span class="keyword">end</span>+1,:) = {[<span class="string">'TurningMachine_'</span>,num2str(i)],<span class="string">'util'</span>,<span class="string">'TurningMachines'</span>,[<span class="string">'util'</span>,num2str(i)]};
+<span class="keyword">end</span>
+
+
+</pre></details><details><summary>cplgFunGMs.m</summary><pre class="codeinput"><span class="keyword">function </span>cplg = cplgFunGMs(numRepGM)
+
+<span class="comment">%% initialization of couplings cell-array</span>
+cplg = {};
+
+<span class="keyword">for </span>i = 1:numRepGM
+    <span class="comment">%% parts couplings</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'GrindingMachines'</span>,[<span class="string">'IN'</span>,num2str(i)],[<span class="string">'GrindingMachine_'</span>,num2str(i)],<span class="string">'IN'</span>};
+    cplg(<span class="keyword">end</span>+1,:) = {[<span class="string">'GrindingMachine_'</span>,num2str(i)],<span class="string">'OUT'</span>,<span class="string">'GrindingMachines'</span>,[<span class="string">'OUT'</span>,num2str(i)]};
+    
+    <span class="comment">%% gCode couplings</span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'GrindingMachines'</span>,<span class="string">'gCode'</span>,[<span class="string">'GrindingMachine_'</span>,num2str(i)],<span class="string">'gCode'</span>};
+    
+    <span class="comment">%% load couplings</span>
+    cplg(<span class="keyword">end</span>+1,:) = {[<span class="string">'GrindingMachine_'</span>,num2str(i)],<span class="string">'load'</span>,<span class="string">'GrindingMachines'</span>,[<span class="string">'load'</span>,num2str(i)]};
+    
+    <span class="comment">%% utilization couplings</span>
+    cplg(<span class="keyword">end</span>+1,:) = {[<span class="string">'GrindingMachine_'</span>,num2str(i)],<span class="string">'util'</span>,<span class="string">'GrindingMachines'</span>,[<span class="string">'util'</span>,num2str(i)]};
+<span class="keyword">end</span>
+
+
+</pre></details><details><summary>cplgFunEF.m</summary><pre class="codeinput"><span class="keyword">function </span>cplg = cplgFunEF(EM)
+
+<span class="comment">%% initialization of couplings cell-array</span>
+cplg = {<span class="string">'ExperimentalFrame'</span>,<span class="string">'ap'</span>,<span class="string">'Generator'</span>,<span class="string">'ap'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'f'</span>,<span class="string">'Generator'</span>,<span class="string">'f'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'vct'</span>,<span class="string">'Generator'</span>,<span class="string">'vct'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'vfr1'</span>,<span class="string">'Generator'</span>,<span class="string">'vfr1'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'vfr2'</span>,<span class="string">'Generator'</span>,<span class="string">'vfr2'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'vfr3'</span>,<span class="string">'Generator'</span>,<span class="string">'vfr3'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'vcg'</span>,<span class="string">'Generator'</span>,<span class="string">'vcg'</span>;
+        <span class="string">'Generator'</span>,<span class="string">'gCodeT'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'gCodeT'</span>;
+        <span class="string">'Generator'</span>,<span class="string">'gCodeG'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'gCodeG'</span>;
+        <span class="string">'Generator'</span>,<span class="string">'OUT'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'OUT'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'stock'</span>,<span class="string">'Transducer'</span>,<span class="string">'stock'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'load'</span>,<span class="string">'Transducer'</span>,<span class="string">'load'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'util'</span>,<span class="string">'Transducer'</span>,<span class="string">'util'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'IN'</span>,<span class="string">'Transducer'</span>,<span class="string">'IN'</span>};
+
+<span class="comment">%% additional couplings</span>
+<span class="keyword">if </span>strcmp(EM,<span class="string">'sc'</span>) || strcmp(EM,<span class="string">'sa'</span>) 
+    <span class="comment">% couplings <span class="keyword">for </span>screening and sensitivity analysis ExperimentalFrame</span>
+    cplg(<span class="keyword">end</span>+1:<span class="keyword">end</span>+6,:) = {<span class="string">'Transducer'</span>,<span class="string">'procTime'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'procTime'</span>;
+                           <span class="string">'Transducer'</span>,<span class="string">'thrput'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'thrput'</span>;
+                           <span class="string">'Transducer'</span>,<span class="string">'Espec'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'Espec'</span>;
+                           <span class="string">'Transducer'</span>,<span class="string">'loadPeak'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'loadPeak'</span>;
+                           <span class="string">'Transducer'</span>,<span class="string">'pcUtil'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'pcUtil'</span>;
+                           <span class="string">'Transducer'</span>,<span class="string">'pcStock'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'pcStock'</span>};
+   
+<span class="keyword">else</span><span class="keyword">if </span>strcmp(EM,<span class="string">'opt'</span>) 
+    <span class="comment">% couplings <span class="keyword">for </span>optimization ExperimentalFrame </span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'Transducer'</span>,<span class="string">'targFV'</span>,<span class="string">'ExperimentalFrame'</span>,<span class="string">'targFV'</span>};
+    
+<span class="keyword">end</span>
+
+</pre></details><details><summary>cplgFunSimM.m</summary><pre class="codeinput"><span class="keyword">function </span>cplg = cplgFunSimM(EM)
+
+<span class="comment">%% initialization of couplings cell-array</span>
+cplg = {<span class="string">'SimulationModel'</span>  ,<span class="string">'ap'</span>    ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'ap'</span>;
+        <span class="string">'SimulationModel'</span>  ,<span class="string">'f'</span>     ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'f'</span>;
+        <span class="string">'SimulationModel'</span>  ,<span class="string">'vct'</span>   ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'vct'</span>;
+        <span class="string">'SimulationModel'</span>  ,<span class="string">'vfr1'</span>  ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'vfr1'</span>;
+        <span class="string">'SimulationModel'</span>  ,<span class="string">'vfr2'</span>  ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'vfr2'</span>;
+        <span class="string">'SimulationModel'</span>  ,<span class="string">'vfr3'</span>  ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'vfr3'</span>;
+        <span class="string">'SimulationModel'</span>  ,<span class="string">'vcg'</span>   ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'vcg'</span>;
+        <span class="string">'ProcessChain'</span>     ,<span class="string">'OUT'</span>   ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'IN'</span>;
+        <span class="string">'ProcessChain'</span>     ,<span class="string">'stock'</span> ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'stock'</span>;
+        <span class="string">'ProcessChain'</span>     ,<span class="string">'load'</span>  ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'load'</span>;
+        <span class="string">'ProcessChain'</span>     ,<span class="string">'util'</span>  ,<span class="string">'ExperimentalFrame'</span>,<span class="string">'util'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'gCodeT'</span>,<span class="string">'ProcessChain'</span>     ,<span class="string">'gCodeT'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'gCodeG'</span>,<span class="string">'ProcessChain'</span>     ,<span class="string">'gCodeG'</span>;
+        <span class="string">'ExperimentalFrame'</span>,<span class="string">'OUT'</span>   ,<span class="string">'ProcessChain'</span>     ,<span class="string">'IN'</span>};
+
+<span class="comment">%% additional couplings</span>
+<span class="keyword">if </span>strcmp(EM,<span class="string">'sc'</span>) || strcmp(EM,<span class="string">'sa'</span>) 
+    <span class="comment">% couplings <span class="keyword">for </span>screening and sensitivity analysis ExperimentalFrame</span>
+    cplg(<span class="keyword">end</span>+1:<span class="keyword">end</span>+6,:) = {<span class="string">'ExperimentalFrame'</span>,<span class="string">'procTime'</span>,<span class="string">'SimulationModel'</span>,<span class="string">'procTime'</span>;
+                           <span class="string">'ExperimentalFrame'</span>,<span class="string">'thrput'</span>  ,<span class="string">'SimulationModel'</span>,<span class="string">'thrput'</span>;
+                           <span class="string">'ExperimentalFrame'</span>,<span class="string">'Espec'</span>   ,<span class="string">'SimulationModel'</span>,<span class="string">'Espec'</span>;
+                           <span class="string">'ExperimentalFrame'</span>,<span class="string">'loadPeak'</span>,<span class="string">'SimulationModel'</span>,<span class="string">'loadPeak'</span>;
+                           <span class="string">'ExperimentalFrame'</span>,<span class="string">'pcUtil'</span>  ,<span class="string">'SimulationModel'</span>,<span class="string">'pcUtil'</span>;
+                           <span class="string">'ExperimentalFrame'</span>,<span class="string">'pcStock'</span> ,<span class="string">'SimulationModel'</span>,<span class="string">'pcStock'</span>};
+   
+<span class="keyword">else</span><span class="keyword">if </span>strcmp(EM,<span class="string">'opt'</span>) 
+    <span class="comment">% couplings <span class="keyword">for </span>optimization ExperimentalFrame </span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'ExperimentalFrame'</span>,<span class="string">'targFV'</span>,<span class="string">'SimulationModel'</span>,<span class="string">'targFV'</span>};
+    
+<span class="keyword">end</span>
+
+</pre></details><details><summary>cplgFunCE.m</summary><pre class="codeinput"><span class="keyword">function </span>cplg = cplgFunCE(EM)
+
+<span class="comment">%% initialization of couplings cell-array</span>
+cplg = {<span class="string">'ExperimentMethod'</span>, <span class="string">'paramConf'</span>, <span class="string">'SimulationMethod'</span>, <span class="string">'paramConf'</span>;
+        <span class="string">'SimulationMethod'</span>, <span class="string">'curResults'</span>,<span class="string">'ExperimentMethod'</span>, <span class="string">'curResults'</span>;
+        <span class="string">'ExperimentMethod'</span>,<span class="string">'results'</span>,    <span class="string">'ComplexExperiment'</span>,<span class="string">'results'</span>;    
+        <span class="string">'SimulationMethod'</span>, <span class="string">'ap'</span>,        <span class="string">'SimulationModel'</span>,  <span class="string">'ap'</span>;
+        <span class="string">'SimulationMethod'</span>, <span class="string">'f'</span>,         <span class="string">'SimulationModel'</span>,  <span class="string">'f'</span>;
+        <span class="string">'SimulationMethod'</span>, <span class="string">'vct'</span>,       <span class="string">'SimulationModel'</span>,  <span class="string">'vct'</span>;
+        <span class="string">'SimulationMethod'</span>, <span class="string">'vfr1'</span>,      <span class="string">'SimulationModel'</span>,  <span class="string">'vfr1'</span>;
+        <span class="string">'SimulationMethod'</span>, <span class="string">'vfr2'</span>,      <span class="string">'SimulationModel'</span>,  <span class="string">'vfr2'</span>;
+        <span class="string">'SimulationMethod'</span>, <span class="string">'vfr3'</span>,      <span class="string">'SimulationModel'</span>,  <span class="string">'vfr3'</span>;
+        <span class="string">'SimulationMethod'</span>, <span class="string">'vcg'</span>,       <span class="string">'SimulationModel'</span>,  <span class="string">'vcg'</span>};
+
+<span class="comment">%% additional couplings</span>
+<span class="keyword">if </span>strcmp(EM,<span class="string">'sc'</span>) || strcmp(EM,<span class="string">'sa'</span>) 
+    <span class="comment">% couplings <span class="keyword">for </span>screening and sensitivity analysis EF</span>
+    cplg(<span class="keyword">end</span>+1:<span class="keyword">end</span>+6,:) = {<span class="string">'SimulationModel'</span>,<span class="string">'procTime'</span>,<span class="string">'SimulationMethod'</span>,<span class="string">'procTime'</span>;
+                           <span class="string">'SimulationModel'</span>,<span class="string">'thrput'</span>,  <span class="string">'SimulationMethod'</span>,<span class="string">'thrput'</span>;
+                           <span class="string">'SimulationModel'</span>,<span class="string">'Espec'</span>,   <span class="string">'SimulationMethod'</span>,<span class="string">'Espec'</span>;
+                           <span class="string">'SimulationModel'</span>,<span class="string">'loadPeak'</span>,<span class="string">'SimulationMethod'</span>,<span class="string">'loadPeak'</span>;
+                           <span class="string">'SimulationModel'</span>,<span class="string">'pcUtil'</span>,  <span class="string">'SimulationMethod'</span>,<span class="string">'pcUtil'</span>;
+                           <span class="string">'SimulationModel'</span>,<span class="string">'pcStock'</span>, <span class="string">'SimulationMethod'</span>,<span class="string">'pcStock'</span>};
+   
+<span class="keyword">else</span><span class="keyword">if </span>strcmp(EM,<span class="string">'opt'</span>) 
+    <span class="comment">% couplings <span class="keyword">for </span>optimization EF </span>
+    cplg(<span class="keyword">end</span>+1,:) = {<span class="string">'SimulationModel'</span>,<span class="string">'targFV'</span>,<span class="string">'SimulationMethod'</span>,<span class="string">'targFV'</span>};
+    
+<span class="keyword">end</span>
+
+</pre></details>
+</div></div>
+<br /><br /><br /><h1>Tree Nodes </h1>
+<br /><h2 id="ComplexExperiment">ComplexExperiment (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment</a></small><br /><br />
+<p></p>
+
+<br /><h2 id="ComplexExperiment/CEDec">CEDec (Aspect)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec</a></small><br /><br />
+<p></p>
+
+<br /><h3>Coupling</h3>
+cplgFunCE(EM)<p>
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod">ExperimentMethod (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod</a></small><br /><br />
+<p></p>
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec">EMSpec (Spec)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec</a></small><br /><br />
+<p></p>
+
+<h3>Specrule</h3>
+<table>
+<tr><th>Selection</th><th>Condition</th><tr><tr>
+	<td>Screening</td><td>strcmp(EM,'sc')</td>
+</tr>
+<tr>
+	<td>SensitivityAnalysis</td><td>strcmp(EM,'sa')</td>
+</tr>
+<tr>
+	<td>Optimization</td><td>strcmp(EM,'opt')</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization">Optimization (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>searchSpace</td><td>{'ap',[0.5, 1.5], 'f',[0.1, 0.5], 'vct',[150,350],'vfr1',[0.48, 1.86],'vfr2',[0.19, 0.53],'vfr3',[0.03, 0.16],'vcg',[30, 50]}</td>
+</tr>
+<tr>
+	<td>TolFun</td><td>0.001</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization/OPTSpec">OPTSpec (Spec)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization/OPTSpec</a></small><br /><br />
+<p></p>
+
+<h3>Specrule</h3>
+<table>
+<tr><th>Selection</th><th>Condition</th><tr><tr>
+	<td>GeneticAlgorithm</td><td>strcmp(OPT,'ga')</td>
+</tr>
+<tr>
+	<td>SimulatedAnnealing</td><td>strcmp(OPT,'sa')</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization/OPTSpec/GeneticAlgorithm">GeneticAlgorithm (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization/OPTSpec/GeneticAlgorithm</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'@genAlgorithm'</td>
+</tr>
+<tr>
+	<td>Generations</td><td>100</td>
+</tr>
+<tr>
+	<td>PopulationSize</td><td>50</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization/OPTSpec/SimulatedAnnealing">SimulatedAnnealing (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Optimization/OPTSpec/SimulatedAnnealing</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'@simAnnealing'</td>
+</tr>
+<tr>
+	<td>InitialTemperature</td><td>1000</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening">Screening (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>factorSpace</td><td>{'ap',[0.5, 1.5], 'f',[0.1, 0.5], 'vct',[150,350],'vfr1',[0.48, 1.86],'vfr2',[0.19, 0.53],'vfr3',[0.03, 0.16],'vcg',[30, 50]}</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening/SCSpec">SCSpec (Spec)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening/SCSpec</a></small><br /><br />
+<p></p>
+
+<h3>Specrule</h3>
+<table>
+<tr><th>Selection</th><th>Condition</th><tr><tr>
+	<td>DesignOfExperiment</td><td>strcmp(SC,'doe')</td>
+</tr>
+<tr>
+	<td>ElementaryEffect</td><td>strcmp(SC,'ee')</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening/SCSpec/DesignOfExperiment">DesignOfExperiment (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening/SCSpec/DesignOfExperiment</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'@designOfExp'</td>
+</tr>
+<tr>
+	<td>design</td><td>'full'</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening/SCSpec/ElementaryEffect">ElementaryEffect (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/Screening/SCSpec/ElementaryEffect</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'@elementaryEffect'</td>
+</tr>
+<tr>
+	<td>sampleSize</td><td>300</td>
+</tr>
+<tr>
+	<td>numOfOutputs</td><td>6</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis">SensitivityAnalysis (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>factorSpace</td><td>{'ap',[0.5, 1.5], 'f',[0.1, 0.5], 'vct',[150,350],'vfr1',[0.48, 1.86],'vfr2',[0.19, 0.53],'vfr3',[0.03, 0.16],'vcg',[30, 50]}</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis/SASpec">SASpec (Spec)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis/SASpec</a></small><br /><br />
+<p></p>
+
+<h3>Specrule</h3>
+<table>
+<tr><th>Selection</th><th>Condition</th><tr><tr>
+	<td>Sobol</td><td>strcmp(SA,'sob')</td>
+</tr>
+<tr>
+	<td>ExtFAST</td><td>strcmp(SA,'exf')</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis/SASpec/ExtFAST">ExtFAST (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis/SASpec/ExtFAST</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'@eFAST'</td>
+</tr>
+<tr>
+	<td>sampleSize</td><td>300</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis/SASpec/Sobol">Sobol (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/ExperimentMethod/EMSpec/SensitivityAnalysis/SASpec/Sobol</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'@sobol'</td>
+</tr>
+<tr>
+	<td>sampleSize</td><td>300</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationMethod">SimulationMethod (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationMethod</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'@simMethod'</td>
+</tr>
+<tr>
+	<td>StopTime</td><td>14*24*3600</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel">SimulationModel (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel</a></small><br /><br />
+<p></p>
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec">SimMDec (Aspect)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec</a></small><br /><br />
+<p></p>
+
+<br /><h3>Coupling</h3>
+cplgFunSimM(EM)<p>
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame">ExperimentalFrame (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame</a></small><br /><br />
+<p></p>
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec">EFDec (Aspect)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec</a></small><br /><br />
+<p></p>
+
+<br /><h3>Coupling</h3>
+cplgFunEF(EM)<p>
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Generator">Generator (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Generator</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/EF/G/Generator'</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer">Transducer (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer</a></small><br /><br />
+<p></p>
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T1Dec">T1Dec (Aspect)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T1Dec</a></small><br /><br />
+<p></p>
+
+<h3>Coupling</h3>
+<table>
+<tr><th>Source</th><th>From Port</th><th>Target</th><th>To Port</th><tr><tr>
+	<td>Transducer</td><td>stock</td><td>SCaSA</td><td>stock</td>
+</tr>
+<tr>
+	<td>Transducer</td><td>load</td><td>SCaSA</td><td>load</td>
+</tr>
+<tr>
+	<td>Transducer</td><td>util</td><td>SCaSA</td><td>util</td>
+</tr>
+<tr>
+	<td>Transducer</td><td>IN</td><td>SCaSA</td><td>IN</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>procTime</td><td>Transducer</td><td>procTime</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>thrput</td><td>Transducer</td><td>thrput</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>Espec</td><td>Transducer</td><td>Espec</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>loadPeak</td><td>Transducer</td><td>loadPeak</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>pcUtil</td><td>Transducer</td><td>pcUtil</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>pcStock</td><td>Transducer</td><td>pcStock</td>
+</tr>
+
+</table><br />
+
+<h3>Aspectrule</h3>
+<table>
+<tr><th>Selection</th><th>Condition</th><tr><tr>
+	<td>T1Dec</td><td>strcmp(EM,'sc') | strcmp(EM,'sa')</td>
+</tr>
+<tr>
+	<td>T2Dec</td><td>strcmp(EM,'opt')</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T1Dec/SCaSA">SCaSA (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T1Dec/SCaSA</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/EF/Ts/SCaSA'</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T2Dec">T2Dec (Aspect)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T2Dec</a></small><br /><br />
+<p></p>
+
+<h3>Coupling</h3>
+<table>
+<tr><th>Source</th><th>From Port</th><th>Target</th><th>To Port</th><tr><tr>
+	<td>Transducer</td><td>stock</td><td>SCaSA</td><td>stock</td>
+</tr>
+<tr>
+	<td>Transducer</td><td>load</td><td>SCaSA</td><td>load</td>
+</tr>
+<tr>
+	<td>Transducer</td><td>util</td><td>SCaSA</td><td>util</td>
+</tr>
+<tr>
+	<td>Transducer</td><td>IN</td><td>SCaSA</td><td>IN</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>procTime</td><td>TargetFunction</td><td>procTime</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>thrput</td><td>TargetFunction</td><td>thrput</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>Espec</td><td>TargetFunction</td><td>Espec</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>loadPeak</td><td>TargetFunction</td><td>loadPeak</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>pcUtil</td><td>TargetFunction</td><td>pcUtil</td>
+</tr>
+<tr>
+	<td>SCaSA</td><td>pcStock</td><td>TargetFunction</td><td>pcStock</td>
+</tr>
+<tr>
+	<td>TargetFunction</td><td>targFV</td><td>Transducer</td><td>targFV</td>
+</tr>
+
+</table><br />
+
+<h3>Aspectrule</h3>
+<table>
+<tr><th>Selection</th><th>Condition</th><tr><tr>
+	<td>T1Dec</td><td>strcmp(EM,'sc') | strcmp(EM,'sa')</td>
+</tr>
+<tr>
+	<td>T2Dec</td><td>strcmp(EM,'opt')</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T2Dec/SCaSA">SCaSA (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T2Dec/SCaSA</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/EF/Ts/SCaSA'</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T2Dec/TargetFunction">TargetFunction (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ExperimentalFrame/EFDec/Transducer/T2Dec/TargetFunction</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/EF/Ts/TF'</td>
+</tr>
+<tr>
+	<td>nc</td><td>[1,2,3,4,5,6,7,8,9,10]</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain">ProcessChain (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain</a></small><br /><br />
+<p></p>
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec">PCDec (Aspect)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec</a></small><br /><br />
+<p></p>
+
+<br /><h3>Coupling</h3>
+cplgFunPC(numRepTM,numRepGM)<p>
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO1">FIFO1 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO1</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/PC/FIFO'</td>
+</tr>
+<tr>
+	<td>capa</td><td>400</td>
+</tr>
+<tr>
+	<td>numOfOutputs</td><td>numRepTM</td>
+</tr>
+<tr>
+	<td>numOfInputs</td><td>1</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO2">FIFO2 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO2</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/PC/FIFO'</td>
+</tr>
+<tr>
+	<td>capa</td><td>400</td>
+</tr>
+<tr>
+	<td>numOfInputs</td><td>numRepTM</td>
+</tr>
+<tr>
+	<td>numOfOutputs</td><td>1</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO3">FIFO3 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO3</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/PC/FIFO'</td>
+</tr>
+<tr>
+	<td>capa</td><td>400</td>
+</tr>
+<tr>
+	<td>numOfInputs</td><td>1</td>
+</tr>
+<tr>
+	<td>numOfOutputs</td><td>1</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO4">FIFO4 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/FIFO4</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/PC/FIFO'</td>
+</tr>
+<tr>
+	<td>capa</td><td>400</td>
+</tr>
+<tr>
+	<td>numOfInputs</td><td>1</td>
+</tr>
+<tr>
+	<td>numOfOutputs</td><td>numRepGM</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/GrindingMachines">GrindingMachines (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/GrindingMachines</a></small><br /><br />
+<p></p>
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/GrindingMachines/GMMAsp">GMMAsp (MAspect)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/GrindingMachines/GMMAsp</a></small><br /><br />
+<p></p>
+
+<br /><h3>Number of Replication</h3>
+numRepGM<p>
+<br /><h3>Coupling</h3>
+cplgFunGMs(numRepGM)<p>
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/GrindingMachines/GMMAsp/GrindingMachine">GrindingMachine (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/GrindingMachines/GMMAsp/GrindingMachine</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/PC/GM'</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace">HardeningFurnace (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/PC/HT'</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec">HFSpec (Spec)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec</a></small><br /><br />
+<p></p>
+
+<h3>Specrule</h3>
+<table>
+<tr><th>Selection</th><th>Condition</th><tr><tr>
+	<td>Type1</td><td>HF==1</td>
+</tr>
+<tr>
+	<td>Type2</td><td>HF==2</td>
+</tr>
+<tr>
+	<td>Type3</td><td>HF==3</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec/Type1">Type1 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec/Type1</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>load</td><td>6400</td>
+</tr>
+<tr>
+	<td>capa</td><td>20</td>
+</tr>
+<tr>
+	<td>Ai</td><td>0.14</td>
+</tr>
+<tr>
+	<td>As</td><td>3.6</td>
+</tr>
+<tr>
+	<td>weight</td><td>80</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec/Type2">Type2 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec/Type2</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>load</td><td>15000</td>
+</tr>
+<tr>
+	<td>capa</td><td>40</td>
+</tr>
+<tr>
+	<td>Ai</td><td>0.25</td>
+</tr>
+<tr>
+	<td>As</td><td>4.8</td>
+</tr>
+<tr>
+	<td>weight</td><td>240</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec/Type3">Type3 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/HardeningFurnace/HFSpec/Type3</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>load</td><td>20000</td>
+</tr>
+<tr>
+	<td>capa</td><td>70</td>
+</tr>
+<tr>
+	<td>Ai</td><td>0.35</td>
+</tr>
+<tr>
+	<td>As</td><td>6.15</td>
+</tr>
+<tr>
+	<td>weight</td><td>370</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/MuxLoad">MuxLoad (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/MuxLoad</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/HB/mux'</td>
+</tr>
+<tr>
+	<td>numOfInputs</td><td>numRepTM+2+numRepGM</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/MuxStock">MuxStock (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/MuxStock</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/HB/mux'</td>
+</tr>
+<tr>
+	<td>numOfInputs</td><td>4</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/MuxUtilization">MuxUtilization (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/MuxUtilization</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/HB/mux'</td>
+</tr>
+<tr>
+	<td>numOfInputs</td><td>numRepTM+2+numRepGM</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/PathCombiner">PathCombiner (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/PathCombiner</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/HB/pathComb'</td>
+</tr>
+<tr>
+	<td>numOfInputs</td><td>numRepGM</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace">TemperingFurnace (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/PC/HT'</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec">TFSpec (Spec)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec</a></small><br /><br />
+<p></p>
+
+<h3>Specrule</h3>
+<table>
+<tr><th>Selection</th><th>Condition</th><tr><tr>
+	<td>Type1</td><td>TF==1</td>
+</tr>
+<tr>
+	<td>Type2</td><td>TF==2</td>
+</tr>
+<tr>
+	<td>Type3</td><td>TF==3</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec/Type1">Type1 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec/Type1</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>load</td><td>6400</td>
+</tr>
+<tr>
+	<td>capa</td><td>20</td>
+</tr>
+<tr>
+	<td>Ai</td><td>0.14</td>
+</tr>
+<tr>
+	<td>As</td><td>3.6</td>
+</tr>
+<tr>
+	<td>weight</td><td>80</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec/Type2">Type2 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec/Type2</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>load</td><td>15000</td>
+</tr>
+<tr>
+	<td>capa</td><td>40</td>
+</tr>
+<tr>
+	<td>Ai</td><td>0.25</td>
+</tr>
+<tr>
+	<td>As</td><td>5.3</td>
+</tr>
+<tr>
+	<td>weight</td><td>240</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec/Type3">Type3 (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TemperingFurnace/TFSpec/Type3</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>load</td><td>20000</td>
+</tr>
+<tr>
+	<td>capa</td><td>70</td>
+</tr>
+<tr>
+	<td>Ai</td><td>0.35</td>
+</tr>
+<tr>
+	<td>As</td><td>6.15</td>
+</tr>
+<tr>
+	<td>weight</td><td>370</td>
+</tr>
+
+</table><br />
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TurningMachines">TurningMachines (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TurningMachines</a></small><br /><br />
+<p></p>
+
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TurningMachines/TMMAsp">TMMAsp (MAspect)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TurningMachines/TMMAsp</a></small><br /><br />
+<p></p>
+
+<br /><h3>Number of Replication</h3>
+numRepTM<p>
+<br /><h3>Coupling</h3>
+cplgFunTMs(numRepTM)<p>
+<br /><h2 id="ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TurningMachines/TMMAsp/TurningMachine">TurningMachine (Entity)</h2>
+<small><b>Path: </b><a href="#TOP" style="text-decoration: none">ComplexExperiment/CEDec/SimulationModel/SimMDec/ProcessChain/PCDec/TurningMachines/TMMAsp/TurningMachine</a></small><br /><br />
+<p></p>
+
+<h3>Attributes</h3>
+<table>
+<tr><th>Name</th><th>Value</th><tr><tr>
+	<td>mb</td><td>'simModelBase/PC/TM'</td>
+</tr>
+
+</table><br />
+
+
+</body>
+</html>

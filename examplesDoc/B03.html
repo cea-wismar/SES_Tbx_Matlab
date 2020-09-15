@@ -1,0 +1,85 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Variant Modelling Using Aspects Siblings </title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+
+<h1>Variant Modelling Using Aspects Siblings<br>
+    (alternative has-a relations)</h1>
+
+
+<h2>Motivation</h2>
+<p>
+This example shows, how you can describe different model structures in a single SES by using Aspect Siblings. The example SES specifies two alternative model structures (variants). 
+
+<details>
+<summary>Basic SES: </summary>
+<img src="images/B03_SES.png" width="700"/>
+</details>
+
+<details>
+<summary>In the SES specified model structures:</summary>
+<img src="images/B03_1.png" width="750"/> 
+</details>
+</p> 
+
+<h2>Entities</h2>
+<p>
+Variant 1 - The model consist of:
+</p>
+<ul>
+	<li> <b>atomic models (AM):</b> B, C, D</li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+
+<p>
+Variant 2 - The model consist of:
+</p>
+<ul>
+	<li> <b>atomic models (AM):</b> B, D</li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+
+
+<h2>Description</h2>
+<h3>Aspect Siblings</h3>
+<p>
+Aspect Siblings decribe alternative system variants, each Aspect with its own has-a relation. In order to control the selection of a variant during pruning you need to add an Aspect Rule (Aspectrule). Aspect Rules are similiar to Specialization Rules (see ex. 2). Here, the SES Variable "varVariant" is defined to specify the Aspectrule.
+</p>
+
+<h3>SES Variables</h3>
+<p>
+basic explanation see example 2
+</p>
+
+<h3>Semantic Conditions</h3>
+<p>
+basic explanation see example 2 
+</p>
+		
+
+<h3>Aspectrule</h3>
+<p>
+After defining the SES Variable "varVariant" you can set the Aspectrule. Select one of the 
+Aspect-Siblings (doesn`t matter which) and add your conditions. Each rule consists
+of a condition and a selection, that occurs, when the condition is 
+valid. Be sure not to enter conditions that could be valid at the same time, as
+it will lead to an error message during pruning.	
+</p>
+
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>

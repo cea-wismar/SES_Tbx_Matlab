@@ -1,0 +1,84 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Dynamic Couplings Using SES Functions</title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+<h1>Dynamic Couplings Using SES Functions</h1>
+
+<h2>Motivation</h2>
+<p>
+This example shows, how you can describe different coupling relations with a single 
+Aspect by using an SES Function. The SES specifies two system variants with different coupling relations for an aggregated system.
+
+<details>
+<summary>Basic SES: </summary>
+<img src="images/B07_SES.png" width="700"/>
+</details>
+
+<details>
+<summary>In the SES specified model structures:</summary>
+<img src="images/B07_1.png" width="750"/> 
+</details> 
+</p>
+ 
+
+<h2>Entities</h2>
+<p>
+Variant 1 - The model consist of: 
+</p>
+<ul>
+	<li> <b>atomic models (AM):</b> B, C, D, E </li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+
+<h2>Description</h2>
+<p>
+Although, this SES possess no decision nodes, it still defines 2 different 
+system variants for the CM A, one with a parallel coupling structure and the other with a serial coupling structure.
+</p>
+
+<h3>SES Variables</h3>
+<p>
+We define the SES Variable "typeVar" to control the selection of a specific coupling structure for CM A. If the value of "typeVar" is equal to "parallel", the parallel coupling structure shall be selected and if it is equal to "serial", the serial coupling structure shall be selected. We also define a Semantic Condition for this SES Variable.
+</p>
+
+<h3>SES Function</h3>
+<p>
+If you want use an SES Function for specifying couplings, the return value must follow specific rules:
+</p>
+<ul>
+	<li> Return value must be a cell array with the size n x 4 </li> 
+	<li> Structure for each coupling relation: {Source Comp. Name, From Port, Sink Comp. Name, To Port} </li> 
+	<li> Source and Sink Comp. Name are always of type string </li> 
+	<li> Ports can be of any type (normally a string or integer value)</li> 	
+</ul>
+<p>
+The common way is to create a switch-case-construct and transfer an SES Variable,
+that is used to select one case. Here, the SES Variable "typeVar" is used. In 
+each case part you define a specific coupling structure. The return value is a cell array, in which each row defines one coupling relation. SES Functions are always evaluated during pruning.
+</p>
+
+<h3>Reusable Coupling Functions and Pre-defined Internal Variables</h3>
+<p>
+It is possible to write SES Functions for defining couplings, that can be called several times in different Aspect nodes. Therefore, you have mostly to transfer information about the child nodes and eventually the parent node. It might be quite time consuming to do this each time in your SES Function call. That's why you can access these nodes by using pre-defined
+internal variables.
+If you want transfer all children of an Aspect you can use the internal variable 'Children'. It provides all information in a cell array. If you want transfer the parent node, you can use the internal variable 'Parent'. Be sure not to forget the single quotes, as it must be a string. The SES Function used in this example is written for any kind of number of children.
+Hence, you can use this SES Function, whenever a parallel or serial coupling relation is needed.
+</p>
+
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>

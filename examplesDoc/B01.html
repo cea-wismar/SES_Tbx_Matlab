@@ -1,0 +1,90 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Decomposing Modular-Hierarchical Models Using Aspects</title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+<h1>Decomposing Modular-Hierarchical Modelss Using Aspects<br>
+    (has-a, part-of relation) </h1>
+
+
+<h2>Motivation</h2>
+<p>
+This example shows, how you can describe the decomposition 
+of a modular-hierarchical model. Furthermore it shows, how to specify coupling relations beetween model components. 
+
+<details>
+<summary>Basic SES: </summary>
+<img src="images/B01_SES.png" width="700"/>
+</details>
+
+<details>
+<summary>In the SES specified model structure:</summary>
+<img src="images/B01_1.png" width="350"/> 
+</details>
+</p>
+
+<h2>Entities</h2>
+<p>
+The model consist of:
+</p>
+<ul>
+	<li> <b>atomic models (AM):</b> B, C, D</li> 
+	<li> <b>coupled models (CM):</b> A </li> 
+</ul>
+	
+
+<h2>Description</h2>
+
+<h3>Adding an Aspect</h3>
+<p>
+Aspects describe a decomposition as a has-a (part-of) relation. In the example the Model_XY is decomposed into the entities
+"A" and "D". 
+The entity "A" is further decomposed into the entities "B" and "C".
+Here, an Aspect node is used again.
+Notice, that AM are always modelled as leaf nodes and CM are represented
+as inner entity nodes in an SES.
+</p>
+
+
+<h3>Couplings</h3>
+<p>
+Aspects can define Couplings between the parent entity and the children entities and the children itself. Therefor entities have a port property. Each coupling relation is defined with a 4-tupel consisting of:
+<ul>
+	<li> <b> source component name, </b> </li>
+	<li> <b> source port name, </b> </li>
+	<li> <b> sink component name, </b> </li>
+	<li> <b> sink port name </b> </li> 
+</ul>
+
+<p>	
+The following example specifies the coupling relation between "C" and "B" as:	
+<ul>
+	<li>connect output port "out" from "C" to input port "in2" from "D".</li>
+<ul>
+</p>	
+<p>
+	<table>
+	<tr>
+		<th>#</th><th>source component</th><th>source port</th><th>sink component</th><th>sink port</th>
+	</tr>
+	<tr>
+		<td>1</td><td>C</td><td>out</td><td>B</td><td>in2</td>
+	</tr>
+	</table>
+</p>
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>

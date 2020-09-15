@@ -1,0 +1,152 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>SES Example Documentation</title><meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+<div class="content">
+
+<!--START EDITING BELOW-->
+<h1>SES Examples Documentation</h1>
+
+<details>
+<summary>
+The SES Toolbox has been developed by the Research Group Computational Engineering and Automation (CEA) 
+</summary>
+at Wismar University of Applied Sciences. It can be used for ontology based modeling of systems using the System Entity Structure (SES) approach. A set of systems (e.g. system variants), called a family of systems, is specified with an SES. In conjunction with basic systems, which are organized in a Model Base (MB), executable models for the MATLAB / Simulink environment can be generated.<BR>
+
+The toolbox is based on a subset of the long term research of B.P. Zeigler, who comprehensively introduced the SES/MB approach with his book "Multifacetted Modeling and Discrete Event Simulation" in 1984. Since that time the approach was continuously advanced by Zeigler and others. Accordingly, the toolbox also introduces new concepts, which increase the flexibility of modeling using the SES ontology and extends the scope of application. Moreover, it provides additional features particularly useful for modeling and simulation in the MATLAB/Simulink environment. Of course, the toolbox is also useable in combination with other proprietary MATLAB toolboxes, such as SimEvents or Simscape, or free available toolboxes, such as the Parallel Discrete Event System (PDEVS) toolbox for MATLAB (MatlabDEVS Toolbox) also developed by the Research Group CEA.
+For more information about the SES theory and the toolbox itself look to the <a href="http://www.mb.hs-wismar.de/cea/SES_Tbx/sesToolboxMain.html" target="_blank">RG CEA SES tbx. web site</a>.
+</details>
+
+<p></p>
+The examples can be seen as a pragmatic introduction tutorial. They demonstrate step by step basic SES modeling features. We advice to study the examples in their order.
+<p>
+</p>  
+
+<img src="images/ExampleMenu.png" width="600"/> 
+   
+
+<p><table>
+
+<colgroup>
+    <col width="10">
+	<col width="100">
+	<col>
+</colgroup>
+   
+<tr>
+<th>#</th>
+<th>Basic</th>
+<th>This example shows, how ...</th>
+</tr>
+
+<tr height="50">
+<td>01</td>
+<td><a href="./B01.html">Decomposing Models Using Aspects</a></td>
+<td>you can describe a decomposition of a modular-hierarchical model. Furthermore it shows, how to specify coupling relations beetween components.</td>
+</tr>
+
+<tr height="50">
+<td>02</td>
+<td><a href="./B02.html">Variant Modeling Using Specializations</a></td>
+<td>you can describe different model structures in a single SES by using Specializations. Furthermore the example introduces SES Variables and Sementic Conditions</td>
+</tr>
+
+<tr height="50">
+<td>03</td>
+<td><a href="./B03.html">Variant Modeling Using Aspects Siblings</a></td>
+<td>you can describe different model structures in a single SES by using Aspect-Siblings</td>
+</tr>
+
+<tr height="50">
+<td>04</td>
+<td><a href="./B04.html">Variant Modeling Using a MultiAspect</a></td>
+<td>you can describe different model structures consisting of a varying number of replications of components from the same type in a single SES by using a MultiAspect.</td>
+</tr>
+
+<tr height="50">
+<td>05</td>
+<td><a href="./B05.html">Constraints Between Decision Nodes</a></td>
+<td>you can define constraints between decision nodes. It is an extension to example "3 Variant Modelling using Aspects". So you will find the general part of the description in example 3.</td>
+</tr>
+
+<tr height="50">
+<td>06</td>
+<td><a href="./B06.html">Entity Attributes &amp; SES Functions</a></td>
+<td>you can assign parameters (attributes) to entity nodes. Furthermore, it shows how to deal with complex calculations by using SES Functions. The example SES has the same structure as the SES from example 2 "Variant Modelling Using Specializations", but it has been extended by additional attributes.</td>
+</tr>
+
+<tr height="50">
+<td>07</td>
+<td><a href="./B07.html">Dynamic Couplings Using SES Functions</a></td>
+<td>you can describe different coupling relations with a single Aspect node by using an SES Function.</td>
+</tr>
+
+<tr height="50">
+<td>08</td>
+<td><a href="./B08.html">Merging SESs &amp; Attribute Inheritance</a></td>
+<td>you can merge several SESs to one SES. Moreover, the example shows the concept of Attribute Inheritance between the parent and children entities at Specializations and what you have to respect when SESs are merged.</td>
+</tr>
+
+<tr height="50">
+<td>09</td>
+<td><a href="./B09.html">Aspect Inheritance & Priorities</a></td>
+<td>you can use the priority property of Aspect and MultiAspect nodes to solve decision problems caused by Aspect Inheritance.</td>
+</tr>
+
+<tr height="50">
+<td>10</td>
+<td><a href="./B10.html">Using the Toolbox API</a></td>
+<td>you can use the toolbox API for pruning your SES apart from the Editor with a MATLAB script. Moreover, it explains the difference between pruning and flattening. The SES here is taken from example 3.</td>
+</tr> 
+
+
+
+</table></p>
+
+<p><table>
+
+<colgroup>
+    <col width="10">
+	<col width="100">
+	<col>
+</colgroup>
+
+<tr>
+<th>#</th>
+<th>Advanced</th>
+<th>This example shows, how ...</th>
+</tr>
+
+<tr height="50">
+<td>01</td>
+<td><a href="./A01.html">Variant Subsystem (simple)</a></td>
+<td>to specify and manage a set of alternative system variants using an SES and the SES Toolbox API. Moreover, it shows how to generate automatically executable Simulink models based on an SES and Simulink's predefined blocksets. The basic problem statement of this example is taken from the Simulink examples documentation (topic Variant Modeling), where you can find further information about it.</td>
+</tr>
+
+<tr height="50">
+<td>02</td>
+<td><a href="./A02.html">Variant Subsystem (Dynamic Couplings)</a></td>
+<td>model generation in combination with an SES with dynamic couplings can be performed. The example is a straightforward extension of the example A01 "Variant Subsystem (simple)".<br>
+In addition, it demonstrates the implementation of a reactive simulation study using several model generations.</td>
+</tr>
+
+<!--
+<tr height="50">
+<td>03</td>
+<td><a href="./A03.html">Reactive Robot Control (Sorting App)</a></td>
+<td>to use the toolbox and the SES/MB approach in a more complex context by the example of a reactive robot control application.</td>
+</tr>
+-->
+
+</table></p>
+
+
+<a href="http://www.mb.hs-wismar.de/cea/" target="_blank">Research Group CEA, Univ. of Appl. Sciences Wismar</a>
+
+</body></html>

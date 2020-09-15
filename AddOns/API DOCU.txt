@@ -1,0 +1,50 @@
+Methods for class ses_tbx:
+
+All API Methods share the name:
+
+API_<MethodName>
+
+All API Methods are Grouped in the following categories: 
+- GUI
+- Model
+- Node
+- Prune
+- SES
+- Tree
+- Path
+
+Object methods:
+
+API_ModelClose                   
+API_ModelNew          
+API_ModelQuickSave          
+API_ModelSave   
+        
+API_NodeAddSibling         
+API_NodeAddSub              
+API_NodeChangeType       
+API_NodeDelete          
+API_NodeGet                 
+API_NodeGetData                     
+API_NodeRename                  
+API_NodeSetData   
+   
+API_Prune
+API_PruneFirstLevel 
+API_PruneFlatt
+API_PrunePermCheck
+
+API_SESExptFcns
+API_SESGetData
+API_SESSetData   
+
+API_TreeCollapse  
+API_TreeExpand
+
+
+Static methods:
+
+API_GUIHandle          
+API_ModelOpen        
+API_PathExmplFolder  
+API_PathRootFolder 

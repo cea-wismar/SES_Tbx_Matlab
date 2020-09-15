@@ -1,0 +1,154 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Reactive Robot Control (Sorting App)</title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2016-07-19">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+<h1>Reactive Robot Control (Sorting App)</h1>
+
+<h2>Motivation</h2>
+<p>
+The example comprises several advanced concepts. Among other things, it shows the integration of the SES/MB approach in a more complex context by the example of a reactive robot control simulation.
+
+The basic application problem consists of three kinds of parts, which randomly arrive at an input buffer and have to be sorted in three seperated output buffers using a camera and a robot (see <i>Figure: Basis structure...</i>).
+
+The solution is seperated in subproblems, consisting of different task-based control structures and corresponding process components. All structural relations are specified in an SES. The SES defines references to basic models, which are implemented in Simulink / Stateflow, and organized in an MB. The overall execution is controlled by an Experiment Control Unit, which reactively generates executeable simulation models based on the SES and the MB at runtime. Each simulation model contains at a time only the control structure and process components that are necessary to solve the current subproblem (minimal complexity).
+
+In the following, we describe the main apects of the example.
+
+<details>
+<summary>Basic structure of application:</summary>
+<img src="images/A03_1.png" width="300"/>
+</details>
+</p>
+
+
+
+<h2>Description</h2>
+<h3>Basic Approach</h3>
+<p>
+The control application should be solved by applying the SES/MB approach in a closed-loop, which contains a Simulation Model Execution Unit (Simulator) and an Experiment Control Unit (see Figure).
+
+<details>
+<summary>Closed-loop SES/MB approach:</summary>
+<img src="images/A03_2.png" width="400"/>
+</details>
+</p>
+
+<p>
+We seperate the overall application into subproblems (a set of model structures):
+
+<ul>
+	<li>identifying a part with the camera <code>(identification)</code></li>
+	<li>transport of the identified part by the robot from the input buffer to the appropriate output buffer <code>(sorting)</code></li>
+</ul>
+
+Each subproblem is solved by composing dynamic models from the MB to a specific Simulation Model (SM). The necessary structural knowledge and the configuration values for the dynamic models are specified in the SES. The reactive behavior is coded in the specific SM, because it includes a component that recognizes, if the current problem is solved or not. Additionally, reactive behavior can be coded in the Experiment Control (EC), which manages the overall execution. 
+</p>
+
+<p>
+Each SM is essentially structured according to the Simulation Based Control (SBC) approach and the concept of Experimental Frame (EF). The later provides the interface to the EC. Hence, each specific SM is structured into:
+
+<ul>
+	<li>a <code>Model</code> consisting of a <code>Control Model(CM)</code> and a <code>Process Model(PM)</code> and</li>
+	<li>an <code>Experimental Fame(EF)</code>, consisting of a <code>Transducer(T)</code> and an <code>Acceptor(A)</code>. We neglected the <code>Generator</code> of EF for simplification.</li>
+</ul>
+
+The CM maps the current control logic, the PM the behavior and state of the currently involved process components, the T collects values of interest for the EC and the A decides if the current SM should proceed or has to be finished. Values of interest for the EC are for instance results, which are needed for the new setting of SES Variables to start the next cycle.  
+</p>
+
+<p>
+<b>Note:</b> For the example, the EC is implemented as a simple MATLAB function, called <code>startFcn_Sorting</code>, located in the example's directory.
+</p>
+
+
+<h3>MB With Basic Models</h3>
+<p>
+According to the fundamental structure of each SM, the MB contains 3 kinds of basic models: 
+<ul>
+<li>basic control tasks for composing a CM,</li>     
+<li>basic process components for composing a PM</li>
+<li>components for composing an EF</li>
+</ul>
+
+<details>
+<summary>MB with configurable models implemented with Simulink/Stateflow </summary>
+<img src="images/A03_3.png" width="450"/>
+</details>
+</p>
+
+<p>
+<b>Note:</b> The MB is located in the example's subdirectory <code>private</code> and named <code>MB.slx</code>.
+</p>
+
+
+
+<h3>Basic SES Specification</h3>
+<p>
+According to the explanations above, each model structure consists of an EF, composed of a <code>Transducer</code> (T) and an <code>Acceptor</code> (A), and a <code>Model</code>, composed of a CM and a PM. 
+
+<details>
+<summary>Starting structure of SES, mapping the basic model structure</summary>
+<img src="images/A03_4.png" width="450"/>
+</details>
+</p>
+
+<p>
+Now, we have to refine the entities CM, PM and Acceptor. The Transducer must not be refined, because both model structures are using the same basic model <code>transducer</code> (see MB).  
+
+<details>
+<summary>Refinement of entity CM and resulting model structures using basic models</summary>
+<img src="images/A03_5.png" width="600"/>
+</details>
+</p>
+
+
+<p>
+<details>
+<summary>Refinement of entity PM and resulting model structures using basic models</summary>
+<img src="images/A03_6.png" width="450"/>
+</details>
+</p>
+
+<p>
+The process components input buffer and camera are summerized for simplification. The 3 output buffers are summerized in the entity <code>puffer</code>.
+Now we will consider the basic overall SES model and how the different model structures are selected when pruning. 
+
+<details>
+<summary>Basic overall SES</summary>
+<img src="images/A03_7.png" width="450"/>
+</details>
+</p>
+
+
+<p>
+The fundamental selection is specified using AspectRules at the Aspects following the entity CM. The selection depends on the current setting of the SES Variable <code>Obj</code>. The dependencies between the CM, PM and EF are specified using Selection Constraints. The number of parts in each output buffer is safed in SES Variables (<code>A_PuF, B_Puf, C_Puf</code>).  
+</p>
+
+
+<h3>Execute and Study the Example</h3>
+<p>
+You can execute the example using the MATLAB function <code>startFcn...</code> in the example's directory. The execution runs in a stepwise mode and you can observe the execution at the MATLAB prompt. The application stops, if the Condition <code>A_Puf<=3 & B_Puf<=3 & C_Puf<=3</code> will be false.
+</p>
+
+
+<h3>REMARK</h3>
+<p>
+This is an experimental example to demonstrate the application of the toolbox in a more complex context. However, the example could be improvement in many parts. 
+</p>
+
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>

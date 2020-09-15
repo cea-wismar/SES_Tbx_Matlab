@@ -1,0 +1,38 @@
+
+System Entity Structure Toolbox for MATLAB/Simulink
+Version 1.6
+ 
+Research Group Computational Eng. & Automation (CEA)
+Wismar University of Applied Sciences, Wismar,Germany
+ 
+Authors: D. Pascheka, A. Schmidt, B. Freymann, P. Junglas*, T. Pawletta
+
+(* PHWT Vechta/Diepholz/Oldenburg)
+                    
+(C) 2014 - 2019 All Rights Reserved
+  
+The toolbox is not public domain and it is a research prototype. The developers 
+offer no warranty for their functionality. For the required download authorisation 
+and permission of usage the tbx please contact the project supervisor 
+(thorsten.pawletta[at]hs-wismar.de). 
+
+Neither the Institution nor the Authors make any representations about the suitability of this
+software for any purpose. This software is provided ''as is'' without express or implied warranty.
+
+== USED ADDITIONAL TOOLBOXES ==
+
+- FINDJOBJ - 
+Programmed and Copyright by Yair M. Altman: altmany(at)gmail.com
+$Revision: 1.49 $  $Date: 2016/04/18 23:44:49 $
+
+- ENABLE_DISABLE_FIG -
+Programmed by Yair M. Altman: altmany(at)gmail.com
+$Revision: 1.3 $  $Date: 2011/10/14 03:24:32 $
+
+- GUI LAYOUT TOOLBOX -
+Copyright (c) 2015, The MathWorks, Inc. All rights reserved.
+GUI Layout Toolbox 1.1.7 by Ben Tordoff   - MATLAB VER <   R2014b
+GUI Layout Toolbox 2.3.3 by David Sampson - MATLAB VER >=  R2014b
+
+- Auto Layout Tool -
+Copyright (c) 2016, Bennett Mackenzie, Gordon Marks, Steven Postma, Jeff Ong, Monika Bialy
