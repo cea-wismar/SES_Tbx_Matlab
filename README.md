@@ -38,11 +38,6 @@ field, until a different node is selected.
 structure needs to be set. Choosing an existing PES or FPES file sometimes blocks
 the pruning or flattening process and the PES or FPES in the file is displayed.
 
-- SES functions e.g. for couplings only take one argument. If several arguments
-are passed, there is no warning and the inserted information is not removed.
-However, it is not saved. Clicking another node and clicking the node for which
-the information is applied again, makes the insert field be empty.
-
 - Next to the built-in examples more examples are in the directory
 "more_examples". In this directory a documentation for some of these
 examples is placed.
