@@ -1,9 +1,9 @@
 INTRODUCTION
 
-The software "GUI SES tbx", called "SES_Tbx_Matlab" for the sake of simplicity, has
-been developed by the research group Computational Engineering and Automation (CEA)
-at Wismar University of Applied Sciences. Purpose of the software is ontology based
-modeling of system variants (system structures and parameter configurations) using
+The software "SES_Tbx_Matlab" has been developed by the research group
+Computational Engineering and Automation (CEA) at Wismar University of Applied Sciences.
+Purpose of the software is ontology based modeling of system variants
+(system structures and parameter configurations) using
 the System Entity Structure (SES). It provides transformation methods for deriving
 unique system variants.
 Furthermore this toolbox allows to build simulation models using the System Entity
