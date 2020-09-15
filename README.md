@@ -1,6 +1,6 @@
 INTRODUCTION
 
-The software "GUI SES tbx", called "SES_Toolbox" for the sake of simplicity, has
+The software "GUI SES tbx", called "SES_Tbx_Matlab" for the sake of simplicity, has
 been developed by the research group Computational Engineering and Automation (CEA)
 at Wismar University of Applied Sciences. Purpose of the software is ontology based
 modeling of system variants (system structures and parameter configurations) using
@@ -11,7 +11,7 @@ Structure / Model Base (SES/MB) approach.
 
 Information on the SES and this toolbox is available on the website:  
 https://www.cea-wismar.de/tbx/SES_Tbx/sesToolboxMain.html  
-The software is written as Matlab Toolbox and the current version was tested in
+The software is a Matlab Toolbox and also available as Matlab APP. The current version was tested with
 Matlab R2018a and Matlab R2020a.
 
 EXECUTE
