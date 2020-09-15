@@ -1,4 +1,4 @@
-classdef ses_tbx < handle
+classdef ses_tbx < handles
 
     properties (Hidden) 
         % Entity Structure -------------------------------------------------
