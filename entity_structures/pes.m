@@ -161,7 +161,11 @@
             % Recursive Pruning (Second time)
             RootEntity = newSES.nodes(newSES.getRootPath);
             obj.recursivePrune(RootEntity,newSES); 
-            
+
+            % change SES Treepathes to PES Treepathes again (7)
+            rootpath = obj.getRootPath;
+            rootNode = obj.nodes(rootpath);
+            obj.PathesfromSES2PES(rootNode,[],newSES)%rootNode.parent = [];
            
             clear SES
         end%pruning
@@ -633,7 +637,7 @@
                 
                 % add the subtree  
                 for j=1:numel(chlst)
-                    oldtreepath = chlst{j}.treepath;
+                    %oldtreepath = chlst{j}.treepath;
                     chlst{j}.treepath = strrep(chlst{j}.treepath,['/',childbasename,'/'],['/',name,'/']);   %adapt the treepath to the new name
                     chlst{j}.parent = strrep(chlst{j}.parent,childbasename,name);       %adapt the parent to the new name
                     %copy node -> create empty class of node, copy the properties
@@ -676,7 +680,7 @@
             nodeObj.children = newChildren;
             
             %a = values(obj.nodes);  %Test which nodes are in obj
-            
+
             %disp('obj after adding new nodes')
             %disp(obj)
             %disp('SES after adding new nodes')
@@ -684,6 +688,20 @@
             %disp('nodeObj after adding new nodes')
             %disp(nodeObj)
 
+        end%function
+        
+        %% collect children of the node CP recursively and place in chlst
+        function chlst = recursiveChildrenCollect(obj,nodeObj,chlst,SES)
+            CP = nodeObj.getChildrenPath;
+            if ~isempty(CP)
+                numCP = numel(CP);
+                for i = 1:numCP
+                    CPA = CP{i};
+                    childN = SES.nodes(CPA);
+                    chlst{end+1} = childN;
+                    chlst = recursiveChildrenCollect(obj,childN,chlst,SES);
+                end
+            end
         end%function
         
         %%
@@ -763,6 +781,36 @@
                 end
                 %Yes: node is a decision node----------------------------
                 if AspCount~=1
+                    %Have the nodes been brothers in the SES? -> Get by
+                    %prority deleted aspectrules back (deleted in function
+                    %evalGlobalPriorities)
+                    sesNodes = values(obj.Ses.nodes);   %nodes of the original SES
+                    for kk=1:length(sesNodes)
+                        if strcmp(sesNodes{kk}.type, nodeObj.type) && strcmp(sesNodes{kk}.name, nodeObj.name) ...
+                                && strcmp(sesNodes{kk}.priority, nodeObj.priority) && strcmp(sesNodes{kk}.comment, nodeObj.comment) %find node in SES
+                            %now look whether the node sesNodes{kk} had a
+                            %sibling of the same type in the SES -> the same
+                            %type, parent, and treepath except last part
+                            hasSiblingInSES = 0;
+                            for ll=1:length(sesNodes)
+                                if strcmp(sesNodes{ll}.type, sesNodes{kk}.type) && strcmp(sesNodes{ll}.parent, sesNodes{kk}.parent) && kk ~= ll %not the same node
+                                    lp = sesNodes{ll}.treepath;
+                                    lastslash_pos = find(lp == '/', 1, 'last');
+                                    lp = lp(1 : lastslash_pos - 1);
+                                    kp = sesNodes{ll}.treepath;
+                                    lastslash_pos = find(kp == '/', 1, 'last');
+                                    kp = kp(1 : lastslash_pos - 1);
+                                    if strcmp(lp, kp)
+                                        hasSiblingInSES = 1;
+                                    end
+                                end
+                            end
+                            if hasSiblingInSES == 1
+                                nodeObj.aspectrule = sesNodes{kk}.aspectrule;
+                            end                       
+                        end
+                    end
+                    
                     %check: only one condition is true?--------------------
                     %if not->errormessage 
                     %else -> evaluate Functions in aspectrule
@@ -811,18 +859,7 @@
                     
                     %find children of masp, create entities depending on numRep and add to PES
                     chlst = {};
-                    CP = nodeObj.getChildrenPath;
-                    if ~isempty(CP)
-                        while ~isempty(CP)
-                            numCP = numel(CP);
-                            for i = 1:numCP
-                                CPA = CP{i};
-                                childN = SES.nodes(CPA);
-                                chlst{end+1} = childN;                        
-                            end
-                            CP = childN.getChildrenPath;
-                        end
-                    end
+                    chlst = obj.recursiveChildrenCollect(nodeObj,chlst,SES);
                     chlst(1) = [];  %delete first cell -> child of MASP generated anyway
                     obj.createMultChildren(nodeObj,SES,chlst);  %generate children of MASP with subtree                
                     
