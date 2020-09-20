@@ -167,6 +167,22 @@
             rootNode = obj.nodes(rootpath);
             obj.PathesfromSES2PES(rootNode,[],newSES)%rootNode.parent = [];
            
+            %Third recursive pruning
+            % get the Pes after second Recursive Pruning (copied)
+            newSES2 = obj.getPesBeforeFinalState;
+            
+            %clear all old pes nodes from second pruning
+            obj.nodes = containers.Map('KeyType','char','ValueType','any');
+            
+            % Recursive Pruning (Third time)
+            RootEntity = newSES2.nodes(newSES2.getRootPath);
+            obj.recursivePrune(RootEntity,newSES2); 
+
+            % change SES Treepathes to PES Treepathes again (7)
+            rootpath = obj.getRootPath;
+            rootNode = obj.nodes(rootpath);
+            obj.PathesfromSES2PES(rootNode,[],newSES2)%rootNode.parent = [];
+            
             clear SES
         end%pruning
         
