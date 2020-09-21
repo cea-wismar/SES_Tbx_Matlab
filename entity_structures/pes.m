@@ -167,21 +167,32 @@
             rootNode = obj.nodes(rootpath);
             obj.PathesfromSES2PES(rootNode,[],newSES)%rootNode.parent = [];
            
-            %Third recursive pruning
-            % get the Pes after second Recursive Pruning (copied)
-            newSES2 = obj.getPesBeforeFinalState;
+            %Third recursive pruning -> in case there are still
+            %specialization nodes
+            ono = values(obj.nodes);
+            specNodeInObj = 0;
+            for oo=1:length(ono)
+                if strcmp(ono{oo}.type, 'Spec')
+                    specNodeInObj = 1;
+                end
+            end
             
-            %clear all old pes nodes from second pruning
-            obj.nodes = containers.Map('KeyType','char','ValueType','any');
-            
-            % Recursive Pruning (Third time)
-            RootEntity = newSES2.nodes(newSES2.getRootPath);
-            obj.recursivePrune(RootEntity,newSES2); 
+            if specNodeInObj
+                % get the Pes after second Recursive Pruning (copied)
+                newSES2 = obj.getPesBeforeFinalState;
 
-            % change SES Treepathes to PES Treepathes again (7)
-            rootpath = obj.getRootPath;
-            rootNode = obj.nodes(rootpath);
-            obj.PathesfromSES2PES(rootNode,[],newSES2)%rootNode.parent = [];
+                %clear all old pes nodes from second pruning
+                obj.nodes = containers.Map('KeyType','char','ValueType','any');
+
+                % Recursive Pruning (Third time)
+                RootEntity = newSES2.nodes(newSES2.getRootPath);
+                obj.recursivePrune(RootEntity,newSES2); 
+
+                % change SES Treepathes to PES Treepathes again (7)
+                rootpath = obj.getRootPath;
+                rootNode = obj.nodes(rootpath);
+                obj.PathesfromSES2PES(rootNode,[],newSES2)%rootNode.parent = [];
+            end
             
             clear SES
         end%pruning
