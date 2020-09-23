@@ -38,6 +38,9 @@ field, until a different node is selected.
 structure needs to be set. Choosing an existing PES or FPES file sometimes blocks
 the pruning or flattening process and the PES or FPES in the file is displayed.
 
+- Siblings of multi-aspect nodes and siblings of aspect and multi-aspect nodes on
+the second layer of the SES cannot be pruned.
+
 - Next to the built-in examples more examples are in the directory
 "more_examples". In this directory a documentation for some of these
 examples is placed.
