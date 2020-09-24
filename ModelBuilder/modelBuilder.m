@@ -26,6 +26,21 @@ mbOpts.hSystem = hSystem;
 
 [objects, couplings] = readSES(mbOpts.ses);
 
+% remove NONE elements from list; C.D. 23.09.2020
+valid_objects= struct('name','','mb','','parameters',''); % create the structure to allow concatening
+for k = 1 : length(objects)
+    object_name = objects(k).name;
+    if ~strcmp(object_name(1:4), 'NONE')                  % just add valid objects
+        valid_objects = [valid_objects,objects(k)]; 
+    end
+end
+
+
+objects=valid_objects(2:end);                             % remove the first dummy entry
+%%%%%%%%%%%%%% end remove NONE elements from list
+        
+        
+
 % creates a model with name system from list of objects and connections
 mbOpts.f.addComponents(mbOpts, objects);
 mbOpts.f.addConnections(mbOpts, couplings);
@@ -37,6 +52,9 @@ simOut = mbOpts.f.runSystem(systemName, mbOpts);
 %try to find readable layout
 if strcmp(mbOpts.backend,{'SimulinkI'}) && ~mbOpts.cleanModel && isGraphviz()
     AutoLayout(systemName);
+end
+if strcmp(mbOpts.backend,{'Simulink'})
+Simulink.BlockDiagram.arrangeSystem(systemName)
 end
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
