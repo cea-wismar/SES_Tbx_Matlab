@@ -41,9 +41,9 @@ the pruning or flattening process and the PES or FPES in the file is displayed.
 - Siblings of multi-aspect nodes and siblings of aspect and multi-aspect nodes on
 the second layer of the SES cannot be pruned.
 
-- Next to the built-in examples more examples are in the directory
-"more_examples". In this directory a documentation for some of these
-examples is placed.
+- Next to the built-in examples more examples are in the directory "more_examples".
+This directory is not part of the released version. In this directory a documentation
+for some of these examples is placed.
 
 - Different from older versions, current release allows to define subtrees under multi-aspect nodes.
 
