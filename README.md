@@ -29,6 +29,14 @@ from the SES Toolbox. A step by step guide is in this directory in the file
 "SES_Toolbox_SESViewEl_Steps.pdf". This tool is available on the website:
 https://github.com/cea-wismar/sesviewel
 
+MODEL BUILDING
+
+- The SES_Tbx_Matlab supports a script based model building. This process cannot
+be started from the app GUI. In the directory ./more_examples/FeedbackControl a
+case study for model building is delivered. Using the app, it is necessary to
+change manually into the app directory of SES_Tbx_Matlab.
+
+
 KNOWN BUGS, NOTES, TODO
 
 - All node information in the program need to be set by clicking the respective
@@ -43,8 +51,7 @@ the pruning or flattening process and the PES or FPES in the file is displayed.
 the second layer of the SES cannot be pruned.
 
 - Next to the built-in examples more examples are in the directory "more_examples".
-This directory is not part of the released version. In this directory a documentation
-for some of these examples is placed.
+In this directory a documentation for some of these examples is placed.
 
 - Different from older versions, current release allows to define subtrees under multi-aspect nodes.
 
