@@ -33,8 +33,8 @@ MODEL BUILDING
 
 - The SES_Tbx_Matlab supports a script based model building. This process cannot
 be started from the app GUI. In the directory ./more_examples/FeedbackControl a
-case study for model building is delivered. Using the app, it is necessary to
-change manually into the app directory of SES_Tbx_Matlab.
+case study for model building is delivered. Using the app installation, it is
+necessary to change manually into the app directory of SES_Tbx_Matlab.
 
 
 KNOWN BUGS, NOTES, TODO
