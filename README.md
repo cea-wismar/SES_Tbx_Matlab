@@ -26,7 +26,8 @@ ADD ON TOOL: TREEVIEWER
 with SESViewEl the Matlab Instrument Control Toolbox needs to be installed and
 licensed. If the SES is not displayed completely, the SES needs to be sent again
 from the SES Toolbox. A step by step guide is in this directory in the file 
-"SES_Toolbox_SESViewEl_Steps.pdf".
+"SES_Toolbox_SESViewEl_Steps.pdf". This tool is available on the website:
+https://github.com/cea-wismar/sesviewel
 
 KNOWN BUGS, NOTES, TODO
 
