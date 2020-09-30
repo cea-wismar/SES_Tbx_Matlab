@@ -12,7 +12,7 @@ Structure / Model Base (SES/MB) approach.
 Information on the SES and this toolbox is available on the website:  
 https://www.cea-wismar.de/tbx/SES_Tbx/sesToolboxMain.html  
 The software is a Matlab Toolbox and also available as Matlab App. The current version is tested with
-Matlab R2018a and Matlab R2020a.
+Matlab R2018a and Matlab R2020a. It cannot be executed with Matlab R2020b.
 
 EXECUTE
 
@@ -38,6 +38,8 @@ necessary to change manually into the app directory of SES_Tbx_Matlab.
 
 
 KNOWN BUGS, NOTES, TODO
+
+- This toolbox is known to be incompatible with Matlab R2020b.
 
 - All node information in the program need to be set by clicking the respective
 confirm button. If you forget to click it, information stays visible in the
