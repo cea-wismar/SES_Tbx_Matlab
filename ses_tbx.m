@@ -57,7 +57,8 @@ classdef ses_tbx < handle
                 'UserData',         obj,...
                 'DeleteFcn',        @(hobj,evt)delete(obj)); 
             
-            warning('off','MATLAB:HandleGraphics:ObsoletedProperty:JavaFrame');    
+            warning('off','MATLAB:HandleGraphics:ObsoletedProperty:JavaFrame'); 
+            warning('off', 'MATLAB:ui:javacomponent:FunctionToBeRemoved');
             obj.hData.jFrame = get(handle(obj.hData.f),'JavaFrame');
             
             pause(0.05); 
