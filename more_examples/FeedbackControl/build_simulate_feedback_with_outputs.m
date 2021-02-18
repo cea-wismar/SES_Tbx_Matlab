@@ -1,11 +1,8 @@
 function simresults = build_simulate_feedback_with_outputs(mode)
-
 % this function sets options for model_builder
 % preliminary collection of data for the examples
-% will be replaced by generic GUI version
 % Input Arg for Feedforward SES:
 %   mode = 0 | 1 --> without or with feedforward
-
 
 % general options
 mbOpts.backend = 'Simulink';     % or 'SimulinkI'
