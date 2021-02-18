@@ -5,7 +5,7 @@ function build_simulate_feedback(mode)
 % will be replaced by generic GUI version
 % Input Arg for Feedforward SES:
 %   mode = 0 | 1 --> without or with feedforward
-% without out-ports
+% creates a model without out-ports
 
 
 % general options
