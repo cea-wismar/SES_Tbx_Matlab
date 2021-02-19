@@ -11,6 +11,8 @@ Structure / Model Base (SES/MB) approach.
 
 Information on the SES and this toolbox is available on the website:  
 https://www.cea-wismar.de/tbx/SES_Tbx/sesToolboxMain.html  
+In the file Tutorial.pdf an introduction to the SES is given.
+
 The software is a Matlab Toolbox and also available as Matlab App. The current version is tested with
 Matlab R2018a and Matlab R2020a. It cannot be executed with Matlab R2020b.
 
