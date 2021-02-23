@@ -36,7 +36,7 @@ classdef ses_tbx < handle
                 if verLessThan('MATLAB','8.4')
                     unzip('GUILayoutToolbox117.zip',[path,'/ExtToolboxes/GUI_Layout_TBX'])
                 else
-                    unzip('GUILayoutToolbox233.zip',[path,'/ExtToolboxes/GUI_Layout_TBX'])
+                    unzip('GUILayoutToolbox235.zip',[path,'/ExtToolboxes/GUI_Layout_TBX'])
                 end
                 addpath(genpath([path,'/ExtToolboxes']));
             end 
