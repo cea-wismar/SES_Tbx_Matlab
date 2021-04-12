@@ -1,0 +1,120 @@
+<!DOCTYPE html
+  PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	  
+  <title>Feedback Control Example Including Model Generation and Execution</title>
+  
+  <meta name="generator" content="MATLAB 9.0"><link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+	<meta name="DC.date" content="2021-04-12">
+	<meta name="DC.source" content="">
+	<link rel="stylesheet" type="text/css" href="matlabstyle.css">
+  </head>  
+<body>
+
+<div class="content">
+
+<h1>Feedback Control Example Including Model Generation and Execution</h1>
+
+<h2>Motivation</h2>
+<p>
+This example shows, how to specify, manage, generate, and execute a set of models of alternative system variants using an SES.
+It is demonstrated how to generate automatically executable Simulink models based on an SES and a user defined Simulink model base.
+The case study for this example is a feedback control system described by transfer functions which is influenced by disturbances.
+Those measurable disturbances can be optionally compensated with a feedforward control.
+<p>
+
+
+<details>
+<summary>Alternative system structure variants:</summary>
+<img src="images/A04_1.png" width="650"/>
+</details>
+
+<details>
+<summary>Basic SES:</summary>
+<img src="images/A04_SES.png" width="650"/> 
+</details> 
+</p>
+ 
+
+<h2>Description</h2>
+<p>
+Basically the SES in this example describes 2 model variants, each  with: 
+</p>
+<ul>
+	<li> 3 signal input generators,</li> 
+	<li> a linear or a non-linear controller and</li> 
+	<li> a scope for visualizing </li> 
+</ul>
+<p> 
+	
+<h3>SES</h3>
+<p>
+In the SES the two controllers are modelled with the Specialization "ControllerSpec", where each alternative controller is decomposed into specific entities. The selection of a specific controller when pruning is defined by the SES Variable "VSS_MODE". The 3 structural identical signal input generators (sine wave generators) are specified using a MultiAspect, where the number of replications is set to the constant value of 3.
+</p>
+
+<h3>Multisets</h3>
+<p>
+The 3 signal input generators (sine wave generators) are all represented by the entity node Sine in the SES. However, the sine wave generators should be configured with different attribute values, such as different amplitudes or frequencies. This can be performed by using Multisets, which are defined with #{...}, such as Amplitude=#{0.1,2,0.3}. Here, the first sine wave generator will be configured with Amplitude=0.1, the second with Amplitude=2 and the third with Amplitude=0.3. 
+</p>
+
+<h3>Model Base</h3>
+<p>
+For generating an executable model, the general SES/MB approach is used.
+As model base (MB), where the dynamic models are defined, we use the 
+default Simulink blockset library.
+</p>
+
+<h3>Connection Between SES and MB</h3>
+<p>
+The leaf entities in the SES represent and reference specific dynamic models from a MB.
+For example the entity "Scope" references the Scope block of the Simulink library.
+In order to define a connection between the SES leaf entities and the dynamic models
+from the MB, we use the special attribute "mb". You can find on each leaf entity the definition of the "mb" attribute with a specific string value that refers to an appropriate dynamic model. These references will be evaluated during model generation.
+</p>
+
+<h3>Model Generation</h3>
+<p>
+The model generation is controlled by a MATLAB function ./startFcn..., defined in the example's directory, which uses the SES toolbox API for pruning and calls the modelBuilder. All other functions involved with the model generation process are located in the example's subdirectory "private". 
+</p>
+<p>
+After pruning an SES, the further model generation process is separated into 3 parts:
+</p>
+<ol>
+	<li> "Initialization" </li> 
+	<li> "Translation"   </li> 
+	<li> "Finalization"   </li> 
+</ol>
+
+<p>
+which are seperated into the two MATLAB functions:
+</p>
+<ol>
+	<li> modelBuilder </li> 
+	<li> modelTranslator  </li> 
+</ol>
+
+<p>
+The modelBuilder function is in charge of the initialization and finalization phase and calls the modelTranslator function. The latter deals with the translation phase.
+</p>
+
+<p>
+The translation phase consists of 3 basic steps:
+</p>
+<ol>
+	<li> for each SES leaf entity a MATLAB structure is instantiated, which stores the reference to the model in the MB (entity attribute "mb")
+	and the other configuration parameters</li> 
+	<li> for each MATLAB structure a model object from the MB is created and added to an initial Simulink model  </li> 
+	<li> the coupling information at SES Aspects are evaluated to connect the dynamic models (blocks) in the Simulink model. </li> 
+</ol>
+
+<p>
+<b>Note:</b> The modelTranslator function only allows translating a <b>flatted pruned entity structure (FPES)</b>. For translating a PES you need to adapt the basic algorithm. All model generation functions are only templates and they have to be adapted for any specific problem.
+</p>
+
+
+
+<FORM>
+<INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">
+</FORM>
+</body></html>
