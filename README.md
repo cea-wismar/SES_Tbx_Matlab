@@ -1,5 +1,3 @@
-[![View MATLAB / Simulink Tbx for Variant Modeling & Simulation on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://de.mathworks.com/matlabcentral/fileexchange/68531-matlab-simulink-tbx-for-variant-modeling-simulation)
-
 INTRODUCTION
 
 The software "SES_Tbx_Matlab" has been developed by the research group
@@ -16,7 +14,9 @@ https://www.cea-wismar.de/tbx/SES_Tbx/sesToolboxMain.html
 The file Tutorial.pdf in the main directory of this tool is a presentation introducing the
 SES and available software.
 
-The software is a Matlab Toolbox and also available as Matlab App. The current version is tested with
+The software is a Matlab Toolbox and also available as Matlab App.
+[![View MATLAB / Simulink Tbx for Variant Modeling & Simulation on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://de.mathworks.com/matlabcentral/fileexchange/68531-matlab-simulink-tbx-for-variant-modeling-simulation)
+The current version is tested with
 Matlab R2018a and Matlab R2020a.
 
 EXECUTE
