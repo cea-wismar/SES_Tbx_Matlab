@@ -1,5 +1,6 @@
 [![View MATLAB / Simulink Tbx for Variant Modeling & Simulation on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://de.mathworks.com/matlabcentral/fileexchange/68531-matlab-simulink-tbx-for-variant-modeling-simulation)
-INTRODUCTION
+
+NTRODUCTION
 
 The software "SES_Tbx_Matlab" has been developed by the research group
 Computational Engineering and Automation (CEA) at Wismar University of Applied Sciences.
