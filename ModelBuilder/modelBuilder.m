@@ -4,7 +4,6 @@ function simresults = modelBuilder(mbOpts)
 %   struct  simresults.tout ...time values
 %           simresults.yout ...signal values
 
-
 % get backend functions
 switch mbOpts.backend
   case 'Dymola'
@@ -74,8 +73,8 @@ if ~isfield(mbOpts,'returnResults')
 end
 if mbOpts.returnResults
     [tout, yout] = mbOpts.f.getPlotData(simOut, []);
-    simresults.tout    = tout;             % time values
-    simresults.yvalues = yout.values;      % signal values
+    simresults.tout    = tout;              % time values
+    simresults.yvalues = {yout.values};     % signal values (ALL values --> added {} 10.05.2021 CD
 end
 
 % tidy up
