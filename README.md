@@ -36,11 +36,19 @@ from the SES Toolbox. A step by step guide is in this directory in the file
 "SES_Toolbox_SESViewEl_Steps.pdf". This tool is available on the website:
 https://github.com/cea-wismar/sesviewel
 
-MODEL BUILDING
+MODEL BUILDING (USING 'OLD' Model Builder)
 
 - The SES_Tbx_Matlab supports a script based model building. This process cannot
-be started from the app GUI. In the directory ./more_examples/FeedbackControl a
+be started from the app GUI. In the directory ./examples/Advanced/02 Variant Subsystem (Dynamic Coupling) a
 case study for model building is delivered. Using the app installation, it is
+necessary to change manually into the app directory of SES_Tbx_Matlab.
+
+AUTOMATION OF SIMULATION EXPERIMENTS (USING 'NEW' Model Builder)
+
+- The SES_Tbx_Matlab supports the creation of fully automated simulation experiments.
+In the directory ./examples/Advanced/04 Feedback Control (Model Generation and Execution) you can find an example
+experiment control that makes use of the 'new' model builder moBuild and the execution unit exUnit.
+Using the app installation, it is
 necessary to change manually into the app directory of SES_Tbx_Matlab.
 
 
@@ -57,10 +65,12 @@ the pruning or flattening process and the PES or FPES in the file is displayed.
 - Siblings of multi-aspect nodes and siblings of aspect and multi-aspect nodes on
 the second layer of the SES cannot be pruned.
 
-- Next to the built-in examples more examples are in the directory "more_examples".
-In this directory a documentation for some of these examples is placed.
+- Use of the Tbx can be learnt by going through the built-in examples.
+Most examples come with a documentation.
 
 - Different from older versions, current release allows to define subtrees under multi-aspect nodes.
+
+- Currently there are two different versions of the model builder.
 
 LICENSE
 
