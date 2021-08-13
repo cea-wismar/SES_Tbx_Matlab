@@ -1,36 +1,49 @@
 function experiment_v1_SL(mode)
-% this function nearly correlates with ./privat/PJ/modelBuilderGUI_SL.m 
-% preliminary collection of data for the examples
-% will be replaced by generic GUI version
+% this function defines a simple experiment 
+% preliminary collection of data for the example
 %
 % USES SIMULINK SCOPE !!!
 % Input Arg for SimpleController
 %   mode = 1 | 2
 
 
-% general options
-mbOpts.backend = 'SimulinkI';     % or 'Simulink'
-mbOpts.systemName = 'SimpleController';
-mbOpts.cleanModel = false;        % true(close system & delete files)|false 
-
 % SES options
-mbOpts.ses.file = 'VarSubSysSES_v1.mat'; %with Simulink Scope
-mbOpts.ses.opts = {'VSS_MODE'};
-mbOpts.ses.vals = {mode};
+sesOpts.file = 'VarSubSysSES_v1.mat';   % with Simulink Scope
+sesOpts.opts = {'VSS_MODE'};            % name of SES var
+sesOpts.vals = {mode};                  % value of SES var
 
-% simulation options
-mbOpts.sim.solver = 'ode45';
-mbOpts.sim.stopTime = 10;
-mbOpts.sim.maxStep = 0.1;
 
-% plot Options
-mbOpts.plot.showResults = false;    %true (no Simulink Scopes) | false
-mbOpts.plot.sizeX = 500;
-mbOpts.plot.sizeY = 400;
-mbOpts.plot.nPlots = 1;
-mbOpts.plot.title = 'Scope Results Demo1';
-mbOpts.plot.xLabel = {'Time [s]'};
-mbOpts.plot.yLabel = {'Signal Value'};
+%%% Options for model builder %%%
+mbOpts.backend = 'SimulinkSME';     % or 'SimulinkSMR'
+mbOpts.systemName = 'SimpleController';
+%%% END options for model builder %%%
 
-modelBuilder(mbOpts);
+
+%%% Options for execution unit %%%
+simOpts.backend = mbOpts.backend;
+simOpts.systemName = '';
+simOpts.cleanModel = false; % keep or delete models after execution false | true
+simOpts.solver = 'ode45';
+simOpts.stopTime = 10;
+simOpts.maxStep = 0.1;
+%%% END options for execution unit %%%
+
+
+%%%%%%%%%%%%%%%%%%%% Start experiment %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+PES = ecGeneralprune(sesOpts);
+
+FPES = ecGeneralflatten(PES);
+
+[components,couplings] = ecGeneralprepare(FPES);
+
+
+% call model builder
+[Sim_modelName] = moBuild(mbOpts,components,couplings);
+
+
+% transfer model name
+simOpts.systemName = Sim_modelName;
+% call execution unit and get results
+simresults = exUnit(simOpts); % simresults SimulationOutput
+
 end
