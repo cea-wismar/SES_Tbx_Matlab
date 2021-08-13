@@ -29,9 +29,14 @@ mbOpts.hSystem = hSystem;
 valid_objects= struct('name','','mb','','parameters',''); % create the structure to allow concatening
 for k = 1 : length(objects)
     object_name = objects(k).name;
+    if length(object_name) >=4
     if ~strcmp(object_name(1:4), 'NONE')                  % just add valid objects
         valid_objects = [valid_objects,objects(k)]; 
     end
+    else
+         valid_objects = [valid_objects,objects(k)];
+    end
+        
 end
 
 
