@@ -1,4 +1,4 @@
-Is INTRODUCTION
+INTRODUCTION
 
 The software "SES_Tbx_Matlab" has been developed by the research group
 Computational Engineering and Automation (CEA) at Wismar University of Applied Sciences.
