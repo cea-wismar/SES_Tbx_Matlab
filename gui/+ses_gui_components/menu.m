@@ -435,6 +435,11 @@ classdef menu < ses_gui_components.supportFun
                 end
             end
             
+            % return, if user cancels save as process
+            if filepath == 0
+                return
+            end
+            
             %check if savepath is not a file that is already open on a different window
             if isKey(obj.parent.OpenedModels,[filepath,filename]) && ~strcmp([filepath,filename],obj.parent.SavePath)
                 %errordlg(['"',filename,'" is already open in the Editor. To overwrite the file, close the original first.'],'Save-Error')
