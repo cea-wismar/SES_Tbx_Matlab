@@ -19,7 +19,8 @@
 <h2>Motivation</h2>
 <p>
 This example is a straightforward extension of the example A01 "Variant Subsystem (simple)".
-It extends the previous one by more variability, which results in a higher number of variants. It uses dynamic coupling relations and shows how they can be specified with SES Functions. Subsequently, we only describe the extensions, which are highlighted in the SES tree. 
+It extends the previous one by more variability, which results in a higher number of variants. It uses dynamic coupling relations and shows how they can be specified with SES Functions.
+Subsequently, we only describe the extensions, which are highlighted in the SES tree. 
 
 <details>
 <summary>Basic enlargement and resulting system variants:</summary>
@@ -44,7 +45,9 @@ The example extends the previous one by a varying number of signal generators, t
 </ul>
 
 <p>
-Overall, the SES describes now 6 different model variants (2 x 3).
+Overall, the SES describes now 6 different model variants (2 x 3).<br>
+<br>
+Also here we provide two SES with the example: <code>VarSubSysDynCoupSES_v1.mat</code> (including a Simulink Scope) and <code>VarSubSysDynCoupSES_v2.mat</code> (including a Simulink Out block).
 </p>
  
 	
@@ -52,7 +55,7 @@ Overall, the SES describes now 6 different model variants (2 x 3).
 (Modifications regarding to node SignalMAsp)</h3>
 <p>
 The first thing that has to be changed in the SES compared to the example A01, is 
-the Number Of Replications property at the MultiAspect node. Previously it was set to the constant value of 3. Now you define an SES Variable <code>NumSignals</code> to control the number of sine wave generators. This variable may have the value 1, 2 or 3, which has to be defined as Semantic Condition wit <code>ismember(NumSignals,[1,2,3])</code>. 
+the Number Of Replications property at the MultiAspect node. Previously it was set to the constant value of 3. Now you define an SES Variable <code>NumSignals</code> to control the number of sine wave generators. This variable may have the value 1, 2 or 3, which has to be defined as Semantic Condition with <code>ismember(NumSignals,[1,2,3])</code>. 
 </p>
 <p>
 Moreover, we have to define 3 different coupling specifications, one for each possible case of replication. Therefor, we can define 3 coupling tables, such as in the example SES, or we can define an SES Function, such as following, named <code>c_sg</code>:
@@ -79,7 +82,7 @@ and activate the "Choose Function to set Coupling" field in the editor with the 
 
 <h3>Dynamic Couplings at Aspects Using SES Functions</h3>
 <p>
-Because of the problem enlargement by a varying number of input generators, the number of ports and the couplings are different for the various variants. This problem is solved by using SES Functions for specifying the coupling relations at the Aspect nodes (see nodes ModelDec, LCDec and NLCDec) in the SES, similiar to the above described SES Function for the MultiAspect node and the SES Functions used in example B07. For details regarding to the call and definition of SES Functions open this SES model example in the SES editor and have a look to the tab "Functions". Examplary, we show subsequently the definition of the SES Function <code>CtrCoupl</code>, 
+Because of the problem enlargement by a varying number of input generators, the number of ports and the couplings are different for the various variants. This problem is solved by using SES Functions for specifying the coupling relations at the Aspect nodes (see nodes ModelDec, LCDec and NLCDec) in the SES, similiar to the above described SES Function for the MultiAspect node and the SES Functions used in example B07. For details regarding to the call and definition of SES Functions open this SES model example in the SES editor and take a look at the tab "Functions". Examplary, we show subsequently the definition of the SES Function <code>CtrCoupl</code>, 
 
 <pre class="codeinput">
 <span class="keyword">function</span> cellArray = CtrCoupl(Children,Parent,NumSignals)
@@ -131,10 +134,26 @@ That's why, its attribute <code>Inputs</code> is specified using an SES Function
 </pre>
 
 
-<h3>MB and Model Generation</h3>
-Analogous to the example A01, this SES defines references to dynamic models in an MB, namely the Simulink library. For controlling the entire model generation process use the MATLAB function ./startFcn... located in the example's directory. All other functions involved with the model generation process are located in the example's subdirectory <code>private</code>.
+<h3>MB, Model Generation and Execution</h3>
+<p>
+Analogous to the example A01, this SES defines references to dynamic models in an MB, namely the Simulink library.
+For starting the entire model generation and execution process use the MATLAB functions ./startFcn... located in the example's directory.<br>
+The associated experiment functions are located in the example's subdirectory <code>private</code>.
+</p>
 
-
+<h3>Fully Automated Experiment</h3>
+<p>
+The basic idea of an <i>Experiment Control</i> (EC) as a part of the <b>Extended SES/MB Architeture</b> is presented.<br>
+Possible system variants are automatically generated, executed and evaluated. 
+The output of each generated system variant is compared with a
+pre-defined reference signal. The study starts with the simplest system
+structure. If a controler mode (VSS_MODE) overshoots the ref. amplitude,
+the mode is blocked (skipping more complicated designs using this mode).
+Finally, best system variant is marked in output figure.<br>
+<br> 
+For starting this fully automated experiment, execute <code>ExpCtrl_VarSubSysDynCoup_v3()</code>. <br>
+The associated single experiment function ./private/experiment_v3_SL.m now returns simulation output to the EC and deletes the generated Simulink models after execution.
+</p>
 
 <FORM>
 <INPUT Type="button" VALUE="Back" onClick="history.go(-1);return true;">

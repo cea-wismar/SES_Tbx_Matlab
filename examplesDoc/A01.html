@@ -18,10 +18,11 @@
 
 <h2>Motivation</h2>
 <p>
-This example shows, how to specify and manage a set of alternative system variants using an SES and the SES Toolbox API. Moreover, it shows how to generate automatically executable Simulink models based on an SES and Simulink's predefined blocksets. The basic problem statement of this example is taken from the Simulink examples documentation, where you can find further information about it. 
+This example shows, how to specify and manage a set of alternative system variants using an SES and the SES Toolbox API. Moreover, it shows how to generate automatically executable Simulink models based on an SES and Simulink's predefined blocksets.
+The basic problem statement of this example is taken from the Simulink examples documentation, where you can find further information about it. 
 </p>
 <p>
-<b>The MathWorks Source Link (2015-Feb-02):</b>
+<b>The MathWorks Source Link (2021-Aug-18):</b>
 <a href="http://de.mathworks.com/help/simulink/examples/variant-subsystems.html">http://de.mathworks.com/help/simulink/examples/variant-subsystems.html</a>
 
 <details>
@@ -42,10 +43,12 @@ Basically the SES in this example describes 2 model variants, each  with:
 </p>
 <ul>
 	<li> 3 signal input generators,</li> 
-	<li> a linear or a non-linear controller and</li> 
-	<li> a scope for visualizing </li> 
+	<li> a linear OR a non-linear controller and</li> 
+	<li> a scope for visualizing</li> 
 </ul>
-<p> 
+<p>
+The above version including a scope is defined in the SES <code>VarSubSysSES_v1.mat</code>.<br> 
+If one wants to get evaluable output of the model after simulation the scope needs to be replaced with a Simulink Out block <code>VarSubSysSES_v2.mat</code>.
 	
 <h3>SES</h3>
 <p>
@@ -69,48 +72,53 @@ default Simulink blockset library.
 The leaf entities in the SES represent and reference specific dynamic models from a MB.
 For example the entity "Scope" references the Scope block of the Simulink library.
 In order to define a connection between the SES leaf entities and the dynamic models
-from the MB, we use the special attribute "mb". You can find on each leaf entity the definition of the "mb" attribute with a specific string value that refers to an appropriate dynamic model. These references will be evaluated during model generation.
+from the MB, we use the special attribute "mb". At each leaf entity you can find the definition of the "mb" attribute with a specific string value that refers to an appropriate dynamic model. These references will be evaluated during model generation.
 </p>
 
-<h3>Model Generation</h3>
+<h3>Model Generation and Execution</h3>
 <p>
-The model generation is controlled by a MATLAB function ./startFcn..., defined in the example's directory, which uses the SES toolbox API for pruning and calls the modelBuilder. All other functions involved with the model generation process are located in the example's subdirectory "private". 
+The model generation is invoked by a MATLAB function ./startFcn..., defined in the example's directory, which then calls the appropriate experiment function
+located in the example's subdirectory "private" (./private/ experiment...).
+The experiment function uses the SES toolbox API for pruning and flattening the SES depending on currrent settings of SES variables, calls the <i>Model Builder</i>, and finally the <i>Execution Unit</i>.
+It defines options for the model generation process as well as for the simulation.<br>
+The <i>Model Builder</i> currently only allows generating models from <b>flatted pruned entity structures (FPES)</b>.
 </p>
 <p>
-After pruning an SES, the further model generation process is separated into 3 parts:
+Result of the model generation process is a <i>simulation model executable</i> (SME) or a <i>simulation model representative</i> (SMR) stored in the current directory.
+The name of this SME or SMR is then passed to the execution unit, which performs a simulation run and returns the simulation results.
 </p>
-<ol>
-	<li> "Initialization" </li> 
-	<li> "Translation"   </li> 
-	<li> "Finalization"   </li> 
-</ol>
+<p>
+<b>The general structure of an experiment file is depicted below.</b>
+<pre class="codeinput">
+	<span class="comment">% SET OPTIONS</span>
+	
+	<span class="comment">% set SES options (SES name, SES variable name, SES variable values)</span>
+	sesOpts = ...
+	<span class="comment">% set options for model builder (backend, name of model to be created)</span>
+	mbOpts = ...
+	<span class="comment">% set options for execution unit (backend, name of model to be simulated, solver, ...)</span>
+	simOpts = ...
+	
+	<span class="comment">% START EXPERIMENT</span>
+	
+	<span class="comment">% prune, flatten, and prepare SES via SES toolbox API</span>
+	PES = ecGeneralprune(sesOpts);
+	FPES = ecGeneralflatten(PES);
+	[components,couplings] = ecGeneralprepare(FPES);
+    
+	<span class="comment">% call model builder</span>
+	[Sim_modelName] = moBuild(mbOpts,components,couplings);
 
-<p>
-which are seperated into the two MATLAB functions:
-</p>
-<ol>
-	<li> modelBuilder </li> 
-	<li> modelTranslator  </li> 
-</ol>
+	<span class="comment">% transfer model name</span>
+	simOpts.systemName = Sim_modelName;
 
-<p>
-The modelBuilder function is in charge of the initialization and finalization phase and calls the modelTranslator function. The latter deals with the translation phase.
+	<span class="comment">% call execution unit and get results</span>
+	simresults = exUnit(simOpts);
+    
+	<span class="comment">% optionally display / evaluate results</span>
+ </pre>
+<b>Note: </b>All experiment functions used in examples are only templates and they have to be adapted for any specific problem.<br>	
 </p>
-
-<p>
-The translation phase consists of 3 basic steps:
-</p>
-<ol>
-	<li> for each SES leaf entity a MATLAB structure is instantiated, which stores the reference to the model in the MB (entity attribute "mb")
-	and the other configuration parameters</li> 
-	<li> for each MATLAB structure a model object from the MB is created and added to an initial Simulink model  </li> 
-	<li> the coupling information at SES Aspects are evaluated to connect the dynamic models (blocks) in the Simulink model. </li> 
-</ol>
-
-<p>
-<b>Note:</b> The modelTranslator function only allows translating a <b>flatted pruned entity structure (FPES)</b>. For translating a PES you need to adapt the basic algorithm. All model generation functions are only templates and they have to be adapted for any specific problem.
-</p>
-
 
 
 <FORM>
