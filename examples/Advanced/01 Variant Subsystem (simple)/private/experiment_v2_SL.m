@@ -6,17 +6,16 @@ function experiment_v2_SL(mode)
 % Input Arg for SimpleController
 %   mode = 1 | 2
 
-% SES options
+%%% SES options %%%
 sesOpts.file = 'VarSubSysSES_v2.mat';   % without Simulink Scope, but with signal out instead
 sesOpts.opts = {'VSS_MODE'};            % name of SES var
 sesOpts.vals = {mode};                  % value of SES var
-
+%%% END SES options %%%
 
 %%% Options for model builder %%%
 mbOpts.backend = 'SimulinkSMR';     % or 'SimulinkSMR'
 mbOpts.systemName = 'SimpleControl';
 %%% END options for model builder %%%
-
 
 %%% Options for execution unit %%%
 simOpts.backend = mbOpts.backend;
@@ -28,7 +27,6 @@ simOpts.stopTime = 10;
 simOpts.maxStep = 0.1;
 %%% END options for execution unit %%%
 
-
 %%%%%%%%%%%%%%%%%%%% Start experiment %%%%%%%%%%%%%%%%%%%%%%%%%%%%
 PES = ecGeneralprune(sesOpts);
 
@@ -36,16 +34,14 @@ FPES = ecGeneralflatten(PES);
 
 [components,couplings] = ecGeneralprepare(FPES);
 
-
 % call model builder
 [Sim_modelName] = moBuild(mbOpts,components,couplings);
 
-
 % transfer model name
 simOpts.systemName = Sim_modelName;
-% call execution unit and get results
-simresults = exUnit(simOpts) % simresults SimulationOutput
 
+% call execution unit and get results
+simresults = exUnit(simOpts); % simresults SimulationOutput
 
 % We don't have a scope in this example, but an out-block.
 % So we will have to make visible results manually.
@@ -58,7 +54,6 @@ plot(t,y);
 title('Scope Results Demo2')
 xlabel('Time [s]')
 ylabel('Signal Value')
-
 
 end
 
