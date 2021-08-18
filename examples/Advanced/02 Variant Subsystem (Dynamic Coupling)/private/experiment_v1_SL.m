@@ -1,7 +1,6 @@
 function experiment_v1_SL(mode, numsig)
-% this function nearly correlates with ./privat/PJ/modelBuilderGUI_SL.m 
+% this function defines a simple experiment 
 % preliminary collection of data for the examples
-% will be replaced by generic GUI version
 %
 % USES SIMULINK SCOPE !!!
 % Input Arg for VarSubSysDynCoup
@@ -9,23 +8,40 @@ function experiment_v1_SL(mode, numsig)
 %   numsig = 1 | 2 | 3
 
 
-% general options
-mbOpts.backend = 'SimulinkI';     % or 'Simulink'
+%%% SES options %%%
+sesOpts.file = 'VarSubSysDynCoupSES_v1.mat';   % with Simulink Scope
+sesOpts.opts = {'VSS_MODE', 'NumSignals'};     % names of SES var
+sesOpts.vals = {mode, numsig};                 % values of SES var
+%%% END SES options %%%
+
+%%% Options for model builder %%%
+mbOpts.backend = 'SimulinkSME';     % or 'SimulinkSMR'
 mbOpts.systemName = 'VarSubSysDynCoup';
-mbOpts.cleanModel = false;        % true (close system & delete files)|false 
+%%% END options for model builder %%%
 
-% SES options
-mbOpts.ses.file = 'VarSubSysDynCoupSES_v1.mat'; % uses Simulink Scope
-mbOpts.ses.opts = {'VSS_MODE', 'NumSignals'};
-mbOpts.ses.vals = {mode, numsig};
+%%% Options for execution unit %%%
+simOpts.backend = mbOpts.backend;
+simOpts.systemName = '';
+simOpts.cleanModel = false; % keep or delete models after execution false | true
+simOpts.solver = 'ode45';
+simOpts.stopTime = 10;
+simOpts.maxStep = 0.1;
+%%% END options for execution unit %%%
 
-% simulation options
-mbOpts.sim.solver = 'ode45';
-mbOpts.sim.stopTime = 10;
-mbOpts.sim.maxStep = 0.1;
+%%%%%%%%%%%%%%%%%%%% Start experiment %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+PES = ecGeneralprune(sesOpts);
 
-% plot Options
-mbOpts.plot.showResults = false;   %true (default) | false
+FPES = ecGeneralflatten(PES);
 
-modelBuilder(mbOpts);
+[components,couplings] = ecGeneralprepare(FPES);
+
+% call model builder
+[Sim_modelName] = moBuild(mbOpts,components,couplings);
+
+% transfer model name
+simOpts.systemName = Sim_modelName;
+
+% call execution unit and get results
+simresults = exUnit(simOpts); % simresults are just the times t here, since we have a scope but no Out block in this example 
+
 end

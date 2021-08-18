@@ -1,34 +1,59 @@
 function experiment_v2_SL(mode, numsig)
-% this function nearly correlates with ./privat/PJ/modelBuilderGUI_SL.m 
+% this function defines a simple experiment
 % preliminary collection of data for the examples
 % will be replaced by generic GUI version
+% USES SIMULINK OUT BLOCK
 % Input Arg for VarSubSysDynCoup
 %   mode   = 1 | 2
 %   numsig = 1 | 2 | 3
 
 
-% general options
-mbOpts.backend = 'SimulinkI';     % or 'Simulink'
+%%% SES options %%%
+sesOpts.file = 'VarSubSysDynCoupSES_v2.mat';   % with Simulink Scope
+sesOpts.opts = {'VSS_MODE', 'NumSignals'};     % names of SES var
+sesOpts.vals = {mode, numsig};                 % values of SES var
+%%% END SES options %%%
+
+%%% Options for model builder %%%
+mbOpts.backend = 'SimulinkSME';     % or 'SimulinkSMR'
 mbOpts.systemName = 'VarSubSysDynCoup';
-mbOpts.cleanModel = true;        % true (close system & delete files)|false 
+%%% END options for model builder %%%
 
-% SES options
-mbOpts.ses.file = 'VarSubSysDynCoupSES_v2.mat';
-mbOpts.ses.opts = {'VSS_MODE', 'NumSignals'};
-mbOpts.ses.vals = {mode, numsig};
+%%% Options for execution unit %%%
+simOpts.backend = mbOpts.backend;
+simOpts.systemName = '';
+simOpts.cleanModel = false; % keep or delete models after execution false | true
+simOpts.solver = 'ode45';
+simOpts.stopTime = 10;
+simOpts.maxStep = 0.1;
+%%% END options for execution unit %%%
 
-% simulation options
-mbOpts.sim.solver = 'ode45';
-mbOpts.sim.stopTime = 10;
-mbOpts.sim.maxStep = 0.1;
+%%%%%%%%%%%%%%%%%%%% Start experiment %%%%%%%%%%%%%%%%%%%%%%%%%%%%
+PES = ecGeneralprune(sesOpts);
 
-% plot Options
-mbOpts.plot.sizeX = 500;
-mbOpts.plot.sizeY = 400;
-mbOpts.plot.nPlots = 1;
-mbOpts.plot.title = 'Scope Results varSubSysCoupDemo2';
-mbOpts.plot.xLabel = {'Time [s]'};
-mbOpts.plot.yLabel = {'Signal Value'};
+FPES = ecGeneralflatten(PES);
 
-modelBuilder(mbOpts);
+[components,couplings] = ecGeneralprepare(FPES);
+
+% call model builder
+[Sim_modelName] = moBuild(mbOpts,components,couplings);
+
+% transfer model name
+simOpts.systemName = Sim_modelName;
+
+% call execution unit and get results
+simresults = exUnit(simOpts); % simresults SimulationOutput  
+
+% We don't have a scope in this example, but an out-block.
+% So we will have to make visible results manually.
+%
+t = simresults.yout.time;
+y = simresults.yout.signals(1).values;
+
+figure
+plot(t,y);
+title('Scope Results varSubSysCoupDemo2')
+xlabel('Time [s]')
+ylabel('Signal Value')
+
 end
