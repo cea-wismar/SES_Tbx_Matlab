@@ -19,7 +19,7 @@ The software is a Matlab Toolbox and also available as Matlab App.
 [![View MATLAB / Simulink Tbx for Variant Modeling & Simulation on File Exchange](https://www.mathworks.com/matlabcentral/images/matlab-file-exchange.svg)](https://de.mathworks.com/matlabcentral/fileexchange/68531-matlab-simulink-tbx-for-variant-modeling-simulation)
 
 The current version is tested with
-Matlab R2018a and Matlab R2020a.
+Matlab R2018a and Matlab R2021a.
 
 EXECUTE
 
@@ -36,17 +36,18 @@ from the SES Toolbox. A step by step guide is in this directory in the file
 "SES_Toolbox_SESViewEl_Steps.pdf". This tool is available on the website:
 https://github.com/cea-wismar/sesviewel
 
-MODEL BUILDING (USING 'OLD' Model Builder)
+MODEL BUILDING AND EXECUTION
 
-- The SES_Tbx_Matlab supports a script based model building. This process cannot
-be started from the app GUI. In the directory ./examples/Advanced/02 Variant Subsystem (Dynamic Coupling) a
-case study for model building is delivered. Using the app installation, it is
+- The SES_Tbx_Matlab supports a script or function based model building. This process cannot
+be started from the app GUI. In the directory ./examples/Advanced/ some 
+case studies for model building and execution are provided (examples 01, 02, and 04). Using the app installation, it is
 necessary to change manually into the app directory of SES_Tbx_Matlab.
 
-AUTOMATION OF SIMULATION EXPERIMENTS (USING 'NEW' Model Builder)
+AUTOMATION OF SIMULATION EXPERIMENTS
 
 - The SES_Tbx_Matlab supports the creation of fully automated simulation experiments.
-In the directory ./examples/Advanced/04 Feedback Control (Model Generation and Execution) you can find an example
+In the directories ./examples/Advanced/02 Variant Subsystem (Dynamic Couplings) and
+ ./examples/Advanced/04 Feedback Control (Model Generation and Execution) you can find examples for
 experiment control that makes use of the 'new' model builder moBuild and the execution unit exUnit.
 Using the app installation, it is
 necessary to change manually into the app directory of SES_Tbx_Matlab.
@@ -55,8 +56,8 @@ necessary to change manually into the app directory of SES_Tbx_Matlab.
 KNOWN BUGS, NOTES, TODO
 
 - All node information in the program need to be set by clicking the respective
-confirm button. If you forget to click it, information stays visible in the
-field, until a different node is selected.
+confirm button or "Enter" must be pressed. If you forget to click or press Enter, information just
+stays visible in the field, until a different node is selected.
 
 - When a PES or an FPES is derived, first a target file for saving the derived
 structure needs to be set. Choosing an existing PES or FPES file sometimes blocks
@@ -70,7 +71,11 @@ Most examples come with a documentation.
 
 - Different from older versions, current release allows to define subtrees under multi-aspect nodes.
 
-- Currently there are two different versions of the model builder.
+- The structure of model builder has changed. Currently it is only possible to create Simulink models.
+
+- Functions that implement an Execution Unit were added (directory ./ExecutionUnit).
+
+- Functions that implement general tasks when running an experiment were added (directory ./ExperimentControl)
 
 LICENSE
 
