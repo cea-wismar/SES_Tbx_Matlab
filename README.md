@@ -10,9 +10,8 @@ Furthermore this toolbox allows to build simulation models using the System Enti
 Structure / Model Base (SES/MB) approach.
 
 Information on the SES and this toolbox is available on the website:  
-https://www.cea-wismar.de/tbx/SES_Tbx/sesToolboxMain.html  
-The file Tutorial.pdf in the main directory of this tool is a presentation introducing the
-SES and available software.
+https://www.cea-wismar.de/tbx/SES_Tbx/sesToolboxMain.html 
+(not up-to-date currently) 
 
 The software is a Matlab Toolbox and also available as Matlab App.
 
