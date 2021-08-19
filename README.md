@@ -71,11 +71,11 @@ Most examples come with a documentation.
 
 - Different from older versions, current release allows to define subtrees under multi-aspect nodes.
 
-- The structure of model builder has changed. Currently it is only possible to create Simulink models.
+- The structure of model builder has changed. Currently it is possible to create only Simulink models.
 
-- Functions that implement an Execution Unit were added (directory ./ExecutionUnit).
+- Functions that implement an execution unit were added (directory ./ExecutionUnit).
 
-- Functions that implement general tasks when running an experiment were added (directory ./ExperimentControl)
+- Functions that implement general tasks when running an experiment were added (directory ./ExperimentControl).
 
 LICENSE
 
