@@ -28,7 +28,9 @@ classdef ses_tbx < handle
     methods    
         function obj = ses_tbx( )  % Constructor 
             import ses_gui_components.*
-            
+            % suppress java warnings
+            warning('off','MATLAB:ui:javacomponent:FunctionToBeRemoved');
+            warning('off','MATLAB:ui:javaframe:PropertyToBeRemoved');
             % use this file as entry point 
             path = fileparts(mfilename('fullpath'));
             addpath(genpath(path)) 
