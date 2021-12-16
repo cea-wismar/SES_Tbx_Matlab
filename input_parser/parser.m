@@ -499,10 +499,12 @@ classdef parser < handle
                 nextSym = obj.SymList(kk);
                 if nextSym.Token == Token
                     if strcmp(nextSym.Wert,oldName)
-                        if nextSym.Pos(2) == length(String)
+                        if nextSym.Pos(2) == length(String)                 % einfache Ersetzung des gesamten Strings
                             String = [String(1:nextSym.Pos(1)-1),NewName];
                         else
-                            String = [String(1:nextSym.Pos(1)-1),NewName,String(nextSym.Pos(2)+1:end)];
+                            newString = replace(String,oldName,NewName);    % C.D. 16.12.2021
+                            String = newString;
+                            %String = [String(1:nextSym.Pos(1)-1),NewName,String(nextSym.Pos(2)+1:end)]; % Ersetzung von Zeichen innerhalb des Strings --> Fehler bei mehrfachem Vorkommen
                         end
                     end
                 end
