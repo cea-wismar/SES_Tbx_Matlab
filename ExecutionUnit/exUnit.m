@@ -6,9 +6,13 @@ function simresults = exUnit(simOpts)
 
 % get backend functions
 switch simOpts.backend
+   case 'PDEVS'
+     simOpts.f = exUnitLibFiles(); % execute PDEVS  
+  case 'Files'
+    simOpts.f = exUnitLibFiles(); % execute SW
   case 'Dymola'
     simOpts.f = exUnitLibDymola();
-  case 'SimulinkSMR'       % creating Matlab script files
+  case 'SimulinkSMR'       % execute Matlab script files
     simOpts.f = exUnitLibSimulinkSMR();
   case 'SimulinkSME'       % using Matlab calls directly
     simOpts.f = exUnitLibSimulinkSME();

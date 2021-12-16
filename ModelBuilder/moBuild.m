@@ -9,6 +9,8 @@ function [systemName] = moBuild(mbOpts,objects,couplings)
 
 % get backend functions
 switch mbOpts.backend
+  case 'Files'
+    mbOpts.f = moBuildLibFiles(); % create SW
   case 'Dymola'
     mbOpts.f = moBuildLibDymola();
   case 'SimulinkSMR'       % creating Matlab script files

@@ -115,12 +115,14 @@ classdef fpes < pes
                             end
                         end
                         %Delete all FatherCouplings
+                        try
                         for jj=size(firstDec.coupling,1):-1:1
                             nxtCoup = firstDec.coupling(jj,:);
                             if ismember(parentName,{nxtCoup{1},nxtCoup{3}})                              
                                 firstDec.coupling(jj,:) = [];  %delete cell row                               
                             end
                         end
+                        
                         %find coupling that depends not on father and add
                         %                         disp(' ------------------------------------- ')
                         %                         Coupling
@@ -136,8 +138,9 @@ classdef fpes < pes
 %                             end
 %                         end
                         firstDec.coupling = [firstDec.coupling;addCoupling];   
-                        
-                    end
+                        catch
+                        end
+                        end
                     %recursive Pruning!!!
                     obj.recFlattening(nextChild,PES);
                 end

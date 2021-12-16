@@ -1,6 +1,6 @@
 function [mode, k, Ti] = ec_feedforward(percent_overshoot,max_settl_time)
 
-% CALL [mode,k, Ti] = ec(5,15)
+% CALL [mode,k, Ti] = ec_feedforward(5,15)
 
 % Template for Experiment Control (EC)
 % input: experiment goals

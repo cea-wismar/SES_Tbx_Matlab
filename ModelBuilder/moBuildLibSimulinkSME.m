@@ -25,8 +25,8 @@ fileName = sprintf('%s.slx', systemName);
 number = 1;
 % while ismember(systemName, openPaths)
 while exist(fileName, 'file')
-  number = number+1;
   systemName = strcat(opts.systemName, num2str(number));
+  number = number+1;
   fileName = sprintf('%s.slx', systemName);
 end
 
@@ -61,7 +61,7 @@ for k=1:length(objects)
   parnames = fieldnames(objects(k).parameters);
   parvalues = struct2cell(objects(k).parameters);
   for i = 1:length(parnames)
-    set(h, parnames{i}, parvalues{i});
+    set_param(h, parnames{i}, parvalues{i});
   end
 end
 end

@@ -21,8 +21,8 @@ systemName = opts.systemName;
 fileName = sprintf('Make%s.m', systemName);
 number = 1;
 while exist(fileName, 'file')
-  number = number+1;
   systemName = sprintf('%s%d', opts.systemName, number);
+  number = number+1;
   fileName = sprintf('Make%s.m', systemName);
 end
 
