@@ -1,1 +1,0 @@
-function Inputs = addFun(NumRep)switch NumRep    case 1        Inputs = '|+';    case 2        Inputs = '|++';    otherwise        Inputs = '|+++';        endend

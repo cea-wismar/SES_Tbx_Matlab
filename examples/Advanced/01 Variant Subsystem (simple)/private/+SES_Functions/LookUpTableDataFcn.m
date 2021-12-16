@@ -1,1 +1,0 @@
-function Data = LookUpTableDataFcn()Data = tanh([-5:5]);end
